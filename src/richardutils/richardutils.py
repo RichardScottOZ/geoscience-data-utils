@@ -516,3 +516,13 @@ def world_low_res(country):
 
     return country_out
     
+def zonal_onshore(country, data):
+    gdf_data = gpd.GeoDataFrame(data, geometry = data['geometry'])
+    boundary = world_low_res(country)
+    if boundary.crs != gdf_data.crs:
+        boundary = boundary.to_crs(gdf_data.crs)
+    
+    data_onshore = gpd.clip(data, boundary)
+    
+    return data_onshore
+    
