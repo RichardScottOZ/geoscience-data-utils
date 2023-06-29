@@ -365,7 +365,15 @@ def plothist_combo(da, da2, title, savefig=True, color1='Orange',color2='Gold', 
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')     
         if slide_dict is not None:        
-            slide_dict[title] = title + '.png'        
+            slide_dict[title] = title + '.png'  
+
+def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None):
+    gdf.plot(column=column,  alpha=alpha, cmap=cmap)
+    plt.title(title)
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')     
+        if slide_dict is not None:        
+            slide_dict[title] = title + '.png'  
     
         
 def mmnorm(da):
