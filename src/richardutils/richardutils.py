@@ -316,7 +316,22 @@ def cetrainbow():
     cm.register_cmap(name='cetrainbow', cmap=newcmp)
 
 
-def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict=None:
+def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict=None):
+    """
+    Plot a dataarray with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        da: A DataArray
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    
+    """
+
     fig, ax = plt.subplots(figsize=(size,size))
     if clip is not None:
         quantile = np.nanpercentile(da, clip)
