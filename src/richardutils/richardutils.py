@@ -311,3 +311,19 @@ def cetrainbow():
     newcmp = makecmp(df)
 
     cm.register_cmap(name='cetrainbow', cmap=newcmp)
+
+
+def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict):
+    fig, ax = plt.subplots(figsize=(size,size))
+    if clip is not None:
+        quantile = np.nanpercentile(da, clip)
+        da.plot(cmap=cmap, robust=robust, ax=ax, vmax=quantile)
+    else:
+        da.plot(cmap=cmap, robust=robust, ax=ax)
+    plt.title(title)
+    ax.axes.set_aspect('equal')
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')
+        slide_dict[title] = title + '.png'
+        
+        
