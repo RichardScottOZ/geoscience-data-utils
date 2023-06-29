@@ -479,6 +479,22 @@ def makegdf(df, xcol, ycol, crs):
 
 
 def zonal_stats(vector_data, measurements, dalike, variable):
+    """
+    Get a dataframe of zonal statistics from a DataArra
+
+    Args:
+        vector_data: a dataframe with a unique id
+        measurements: unique column of interest
+        dalike: DataArray to make grid from
+        variable: Name to give the out grid variable
+
+    Returns:
+        zonal stats dataframe
+
+    Examples:
+    gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
+    """
+
     out_grid = make_geocube(
         vector_data=vector_data,
         measurements=[measurements],
@@ -509,6 +525,9 @@ def zonal_stats(vector_data, measurements, dalike, variable):
 )
 
 def global_low_res():
+    """
+    Returns built in global low res world polygons for cheap clipping
+    """
     world_filepath = gpd.datasets.get_path('naturalearth_lowres')
     world = gpd.read_file(world_filepath)
 
@@ -516,6 +535,12 @@ def global_low_res():
 
 
 def world_low_res(country):
+    """
+    Returns built in global low res world polygons for cheap clipping filtered to one country
+    Args:
+        country: string of desired country border e.g. Australia
+    
+    """
     world_filepath = gpd.datasets.get_path('naturalearth_lowres')
     world = gpd.read_file(world_filepath)
 
@@ -544,4 +569,16 @@ def zonal_onshore_globe(data):
     data_onshore = gpd.clip(data, boundary)
     
     return data_onshore
+
+    
+def location_sample(gdf, da, name_col):
+    lat = gdf.geometry.y.tolist()
+    lon = gdf.geometry.x.tolist()
+    xl = xr.DataArray(lon, dims=['location'],coords={"location":da[name_col].tolist()})
+    yl = xr.DataArray(lat, dims=['location'],coords={"location":da[name_col].tolist()})
+    
+    dapt = da.sel(x=xl,y=yl,method="nearest")
+    dfda = dapt.to_dataframe().reset_index()    
+    
+    return dfda
     
