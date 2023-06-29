@@ -358,8 +358,8 @@ def plothist(da, title, color='Orange', savefig=True, slide_dict = None):
 
         
 def plothist_combo(da, da2, title, color1='Orange',color2='Gold', savefig=True, slide_dict = None):
-    bhp_nickel.plot.hist(density=True, color=color1)
-    exploracorn_ndbhp.plot.hist(density=True, color=color2)
+    da.plot.hist(density=True, color=color1)
+    da2.plot.hist(density=True, color=color2)
     plt.yscale('log')
     plt.title(title) 
     if savefig:
