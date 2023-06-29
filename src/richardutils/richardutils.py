@@ -14,6 +14,7 @@ import copy
 
 import xarray as xr
 
+import geopandas as gpd
 
 def richardfunction(n: float) -> float:
     """
@@ -315,7 +316,7 @@ def cetrainbow():
     cm.register_cmap(name='cetrainbow', cmap=newcmp)
 
 
-def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict):
+def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict=None:
     fig, ax = plt.subplots(figsize=(size,size))
     if clip is not None:
         quantile = np.nanpercentile(da, clip)
@@ -326,7 +327,8 @@ def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cli
     ax.axes.set_aspect('equal')
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')
-        slide_dict[title] = title + '.png'
+        if slide_dict is not None:
+            slide_dict[title] = title + '.png'
         
         
         
@@ -346,3 +348,9 @@ def mmnorm(da):
 
     da_norm = (da - da.min(skipna=True))/(da.max(skipna=True) - da.min(skipna=True))
     return da_norm        
+    
+def makegdf(df, xcol, ycol, crs):
+    gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df[xcol],df[ycol], crs=crs))
+    return gdf
+
+gdf = makegdf(schodde,'longitude','latitude','EPSG:4326')    
