@@ -376,6 +376,20 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
             slide_dict[title] = title + '.png' 
 
 def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict, vmax=None):
+    """
+    Plot a dataarray with a title. Remove colorbar in the way
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        da: A DataArray
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    
+    """
     fig, ax = plt.subplots(figsize=(size,size))
     if clip is not None:
         quantile = np.nanpercentile(da, clip)
