@@ -364,8 +364,24 @@ def mmnorm(da):
     da_norm = (da - da.min(skipna=True))/(da.max(skipna=True) - da.min(skipna=True))
     return da_norm        
     
+    
 def makegdf(df, xcol, ycol, crs):
+    """
+    Turn a dataframe of a csv of points into a geodataframe
+
+    Args:
+        df: a dataframe from csv
+        xcol: x coordinate [longitude, easting etc.]
+        ycol: y coordinate
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    mnorm(geoscience_raster)
+    """
+
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df[xcol],df[ycol], crs=crs))
     return gdf
 
-gdf = makegdf(schodde,'longitude','latitude','EPSG:4326')    
+gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
