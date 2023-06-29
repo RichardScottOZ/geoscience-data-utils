@@ -316,7 +316,7 @@ def cetrainbow():
     cm.register_cmap(name='cetrainbow', cmap=newcmp)
 
 
-def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict=None):
+def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None):
     """
     Plot a dataarray with a title.
     Allow saving to a png
