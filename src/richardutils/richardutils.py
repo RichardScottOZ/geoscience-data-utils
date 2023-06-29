@@ -408,7 +408,8 @@ def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
     ax.axes.set_aspect('equal')
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')
-        slide_dict[title] = title + '.png'
+        if slide_dict is not None:
+            slide_dict[title] = title + '.png'
         
     return ax
             
@@ -522,7 +523,7 @@ def zonal_stats(vector_data, measurements, dalike, variable):
     
     return zonal_stats_out    
     
-)
+
 
 def global_low_res():
     """
