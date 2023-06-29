@@ -347,7 +347,7 @@ def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cli
             slide_dict[title] = title + '.png'
         
         
-def plothist(da, title, savefig=True, color='Orange', slide_dict = None):
+def plothist(da, title, savefig=True, color='Orange', savefig=True, slide_dict = None):
     da.plot.hist(density=True, color=color)
     plt.yscale('log')
     plt.title(title)
@@ -357,7 +357,7 @@ def plothist(da, title, savefig=True, color='Orange', slide_dict = None):
             slide_dict[title] = title + '.png'        
 
         
-def plothist_combo(da, da2, title, savefig=True, color1='Orange',color2='Gold', slide_dict = None):
+def plothist_combo(da, da2, title, savefig=True, color1='Orange',color2='Gold', savefig=True, slide_dict = None):
     bhp_nickel.plot.hist(density=True, color=color1)
     exploracorn_ndbhp.plot.hist(density=True, color=color2)
     plt.yscale('log')
