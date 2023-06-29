@@ -16,6 +16,9 @@ import xarray as xr
 
 import geopandas as gpd
 
+import geocube
+from geocube.api.core import make_geocube
+
 def richardfunction(n: float) -> float:
     """
     My function makes square roots.
@@ -375,6 +378,7 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
         if slide_dict is not None:        
             slide_dict[title] = title + '.png' 
 
+
 def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, vmax=None):
     """
     Plot a dataarray with a title. Remove colorbar in the way
@@ -473,3 +477,31 @@ def makegdf(df, xcol, ycol, crs):
     
     return gdf
 
+
+def zonal_stats(vector_data, measurements, dalike, variable):
+    out_grid = make_geocube(
+        vector_data=vector_data,
+        measurements=[measurements],
+        like=dalike, # ensure the data are on the same grid
+    )
+    out_grid[variable] = (dalike.dims, dalike.values, dalike.attrs, dalike.encoding)
+    
+    grouped_da = out_grid.drop("spatial_ref").groupby(out_grid.OBJECTID)
+
+    grid_mean = grouped_da.mean(skipna=True)
+    grid_min = grouped_da.min(skipna=True)
+    grid_max = grouped_da.max(skipna=True)
+    grid_std = grouped_da.std(skipna=True)
+    grid_quantile = grouped_da.quantile(0.999, skipna=True)
+
+    grid_mean = grid_mean.rename({variable: variable + "_mean"})
+    grid_max = grid_max.rename({variable: variable + "_max"})
+    grid_min = grid_min.rename({variable: variable + "_min"})
+    grid_std = grid_std.rename({variable: variable + "__std"})
+    grid_quantile = grid_quantile.rename({variable: variable + "_quantile999"})
+    
+    zonal_stats = xr.merge([grid_mean, grid_min, grid_max, grid_std, grid_quantile]).to_dataframe()
+    
+    return zonal_stats    
+    
+)
