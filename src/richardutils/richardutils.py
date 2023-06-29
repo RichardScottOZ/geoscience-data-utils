@@ -370,7 +370,7 @@ def plothist_combo(da, da2, title, color1='Orange',color2='Gold', savefig=True, 
         if slide_dict is not None:        
             slide_dict[title] = title + '.png'  
 
-def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None):
+def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None, size=7):
     gdf.plot(column=column,  alpha=alpha, cmap=cmap)
     plt.title(title)
     if savefig:
@@ -486,7 +486,7 @@ def zonal_stats(vector_data, measurements, dalike, variable):
     )
     out_grid[variable] = (dalike.dims, dalike.values, dalike.attrs, dalike.encoding)
     
-    grouped_da = out_grid.drop("spatial_ref").groupby(out_grid.OBJECTID)
+    grouped_da = out_grid.drop("spatial_ref").groupby(out_grid[measurements])
 
     grid_mean = grouped_da.mean(skipna=True)
     grid_min = grouped_da.min(skipna=True)
@@ -508,6 +508,13 @@ def zonal_stats(vector_data, measurements, dalike, variable):
     
 )
 
+def global_low_res():
+    world_filepath = gpd.datasets.get_path('naturalearth_lowres')
+    world = gpd.read_file(world_filepath)
+
+    return world
+
+
 def world_low_res(country):
     world_filepath = gpd.datasets.get_path('naturalearth_lowres')
     world = gpd.read_file(world_filepath)
@@ -515,10 +522,22 @@ def world_low_res(country):
     country_out = world.loc[world['name'] == country]
 
     return country_out
+
     
 def zonal_onshore(country, data):
     gdf_data = gpd.GeoDataFrame(data, geometry = data['geometry'])
     boundary = world_low_res(country)
+    if boundary.crs != gdf_data.crs:
+        boundary = boundary.to_crs(gdf_data.crs)
+    
+    data_onshore = gpd.clip(data, boundary)
+    
+    return data_onshore
+
+    
+def zonal_onshore_globe(data):
+    gdf_data = gpd.GeoDataFrame(data, geometry = data['geometry'])
+    boundary = global_low_res()
     if boundary.crs != gdf_data.crs:
         boundary = boundary.to_crs(gdf_data.crs)
     
