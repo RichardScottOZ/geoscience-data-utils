@@ -12,6 +12,8 @@ from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
 import copy
 
+import xarray as xr
+
 
 def richardfunction(n: float) -> float:
     """
@@ -327,3 +329,20 @@ def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cli
         slide_dict[title] = title + '.png'
         
         
+        
+def mmnorm(da):
+    """
+    Minmax norm xarray DataArray
+
+    Args:
+        da: A DataArray
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    mnorm(geoscience_raster)
+    """
+
+    da_norm = (da - da.min(skipna=True))/(da.max(skipna=True) - da.min(skipna=True))
+    return da_norm        
