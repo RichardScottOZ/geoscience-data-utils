@@ -572,6 +572,15 @@ def zonal_onshore_globe(data):
 
     
 def location_sample(gdf, da, name_col):
+    """
+    Returns built in global low res world polygons for cheap clipping filtered to one country
+    Args:
+        gdf: geodataframe of points
+        da: DataArrau to sample:
+        name_col: String to identify the location names
+    
+    """
+
     lat = gdf.geometry.y.tolist()
     lon = gdf.geometry.x.tolist()
     xl = xr.DataArray(lon, dims=['location'],coords={"location":da[name_col].tolist()})
