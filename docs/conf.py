@@ -37,9 +37,9 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'mypackage'
-copyright = 'The mypackage authors'
-author = 'The mypackage authors'
+project = 'richardutils'
+copyright = 'The richardutils authors'
+author = 'The richardutils authors'
 
 
 # -- General configuration ---------------------------------------------------
@@ -66,7 +66,7 @@ suppress_warnings = ['ref.myst']
 # Apidoc automation
 # https://pypi.org/project/sphinxcontrib-apidoc/
 # The apidoc extension and this code automatically update apidoc.
-apidoc_module_dir = '../src/mypackage'
+apidoc_module_dir = '../src/richardutils'
 apidoc_output_dir = './'
 apidoc_excluded_paths = []
 apidoc_toc_file = False
@@ -104,4 +104,4 @@ html_css_files = [
 
 # Branding.
 html_favicon = '_static/favicon.ico'
-html_logo = '_static/mypackage_logo.png'
+html_logo = '_static/richardutils_logo.png'

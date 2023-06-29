@@ -1,4 +1,4 @@
-from .mypackage import *
+from .richardutils import *
 from .cli import cli
 
 from pkg_resources import get_distribution, DistributionNotFound

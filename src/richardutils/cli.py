@@ -1,10 +1,10 @@
 """
-Author: Mypackage authors
+Author: richardutils authors
 Licence: MIT
 """
 import click
 
-from .mypackage import myfunction
+from .richardutils import richardfunction
 
 
 @click.group(context_settings=dict(help_option_names=['--help', '-h']))
@@ -17,7 +17,7 @@ def mysqrt(n):
     """
     Test square rootiness. Call from the command line with:
 
-        mycli mysqrt 100
+        richardcli mysqrt 100
 
     Read the click docs for more on building CLIs:
 
@@ -27,4 +27,4 @@ def mysqrt(n):
     tests/test_cli.py, and remove the [project.scipts] section
     from pyproject.toml.
     """
-    return myfunction(n)
+    return richardfunction(n)

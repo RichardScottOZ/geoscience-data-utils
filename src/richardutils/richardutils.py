@@ -1,11 +1,11 @@
 """
-Author: Mypackage authors
+Author: richardutils authors
 Licence: MIT
 """
 import math
 
 
-def myfunction(n: float) -> float:
+def richardfunction(n: float) -> float:
     """
     My function makes square roots.
 
@@ -16,9 +16,9 @@ def myfunction(n: float) -> float:
         The squarest root.
 
     Examples:
-    >>> myfunction(9)
+    >>> richardfunction(9)
     3.0
-    >>> myfunction(100)
+    >>> richardfunction(100)
     10.0
     """
     return math.sqrt(n)

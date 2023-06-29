@@ -1,6 +1,6 @@
 from click.testing import CliRunner
 
-from mypackage import cli
+from richardutils import cli
 
 
 def test_help():
