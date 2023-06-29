@@ -362,7 +362,30 @@ def mmnorm(da):
     """
 
     da_norm = (da - da.min(skipna=True))/(da.max(skipna=True) - da.min(skipna=True))
-    return da_norm        
+    return da_norm      
+
+def norm_diff_comparison(da1, da2):
+    """
+    Normalised difference and ratio of two xarray
+
+    Args:
+        da1, da2: DataArrays
+
+    Returns:
+        difference and ratio
+
+    Examples:
+    norm_diff_comparison(daarea1, daarea2):
+    """
+
+    da1 = da1.rio.reproject_match(da2)
+    da1_norm = mmnorm(da1)
+    da2_norm = mmnorm(da2)
+    diff = da1_norm - da2_norm    
+    ratio = da1_norm / da2_norm    
+    
+    return diff, ratio
+        
     
     
 def makegdf(df, xcol, ycol, crs):
@@ -375,13 +398,12 @@ def makegdf(df, xcol, ycol, crs):
         ycol: y coordinate
 
     Returns:
-        The squarest root.
+        gdf geodataframe
 
     Examples:
-    mnorm(geoscience_raster)
+    gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
     """
 
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df[xcol],df[ycol], crs=crs))
     return gdf
 
-gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
