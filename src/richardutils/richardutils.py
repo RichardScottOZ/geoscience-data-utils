@@ -373,7 +373,27 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')     
         if slide_dict is not None:        
-            slide_dict[title] = title + '.png'  
+            slide_dict[title] = title + '.png' 
+
+def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=slide_dict, vmax=None):
+    fig, ax = plt.subplots(figsize=(size,size))
+    if clip is not None:
+        quantile = np.nanpercentile(da, clip)
+        da.plot(cmap=cmap, robust=robust, ax=ax, vmax=quantile)
+    elif vmax is not None:
+        da.plot(cmap=cmap, robust=robust, ax=ax, vmax=vmax)
+    else:
+        da.plot(cmap=cmap, robust=robust, ax=ax, vmax=vmax)
+            
+    plt.title(title)
+    plt.gca().collections[0].colorbar.remove()
+    ax.axes.set_aspect('equal')
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')
+        slide_dict[title] = title + '.png'
+        
+    return ax
+            
     
         
 def mmnorm(da):
