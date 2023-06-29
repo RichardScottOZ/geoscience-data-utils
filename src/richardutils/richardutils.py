@@ -364,6 +364,7 @@ def mmnorm(da):
     da_norm = (da - da.min(skipna=True))/(da.max(skipna=True) - da.min(skipna=True))
     return da_norm      
 
+
 def norm_diff_comparison(da1, da2):
     """
     Normalised difference and ratio of two xarray
