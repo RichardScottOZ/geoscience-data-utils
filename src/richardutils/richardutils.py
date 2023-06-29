@@ -500,8 +500,19 @@ def zonal_stats(vector_data, measurements, dalike, variable):
     grid_std = grid_std.rename({variable: variable + "__std"})
     grid_quantile = grid_quantile.rename({variable: variable + "_quantile999"})
     
-    zonal_stats = xr.merge([grid_mean, grid_min, grid_max, grid_std, grid_quantile]).to_dataframe()
+    zonal_stats_out = xr.merge([grid_mean, grid_min, grid_max, grid_std, grid_quantile]).to_dataframe()
     
-    return zonal_stats    
+    zonal_data = vector_data.merge(zonal_stats_out, on=measurements)
+    
+    return zonal_stats_out    
     
 )
+
+def world_low_res(country):
+    world_filepath = gpd.datasets.get_path('naturalearth_lowres')
+    world = gpd.read_file(world_filepath)
+
+    country_out = world.loc[world['name'] == country]
+
+    return country_out
+    
