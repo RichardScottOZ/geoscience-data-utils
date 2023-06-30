@@ -1,7 +1,11 @@
 """
 Author: richardutils authors
 Licence: MIT
+
+TODO: Needs requirements - but a standard bunch for geoscience: numpy,  matplotlib, xarray, rioxarray, geopandas, geocube - generally if using these functions I already have them in an environment
+
 """
+
 import math
 import numpy as np
 import os
