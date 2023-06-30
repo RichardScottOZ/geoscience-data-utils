@@ -39,6 +39,10 @@ def richardfunction(n: float) -> float:
     
     
 def cetrainbow():
+    """
+    Make a CET perceptually uniform rainbow colormap
+    """
+
     CET = """0 0 48 245
 1 0 52 242
 2 0 55 238
@@ -361,6 +365,21 @@ def plothist(da, title, color='Orange', savefig=True, slide_dict = None):
 
         
 def plothist_combo(da, da2, title, color1='Orange',color2='Gold', savefig=True, slide_dict = None):
+    """
+    Plot a gepdataframe with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        da: A DataArray
+        da2: A DataArray to compare
+        color1: string color for first histogram
+        color2: string color for secondt histogram
+        title: title of plot
+        alpha: transparently
+        savefig: write a png to the directory
+        slide_dict: dictionary to store reference to plots in
+    """
     da.plot.hist(density=True, color=color1)
     da2.plot.hist(density=True, color=color2)
     plt.yscale('log')
@@ -371,6 +390,25 @@ def plothist_combo(da, da2, title, color1='Orange',color2='Gold', savefig=True, 
             slide_dict[title] = title + '.png'  
 
 def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None, size=7):
+    """
+    Plot a gepdataframe with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        gdf: A gepdataframe
+        column: string column to plot
+        title: title of plot
+        alpha: transparently
+        savefig: write a png to the directory
+        cmap: a matplotlib colormap
+        slide_dict: dictionary to store reference to plots in
+
+
+    Examples:
+    
+    """
+
     gdf.plot(column=column,  alpha=alpha, cmap=cmap)
     plt.title(title)
     if savefig:
@@ -388,8 +426,7 @@ def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
     Args:
         da: A DataArray
 
-    Returns:
-        The squarest root.
+        
 
     Examples:
     
