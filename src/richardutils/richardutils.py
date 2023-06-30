@@ -551,6 +551,13 @@ def world_low_res(country):
 
     
 def zonal_onshore(country, data):
+    """
+    Returns geodataframe clipped to a country low res boundary: e.g. for after zonal stats dataframe production
+    Args:
+        country: string of desired country border e.g. Australia
+        data: ataframe with a geometry column
+    """
+
     gdf_data = gpd.GeoDataFrame(data, geometry = data['geometry'])
     boundary = world_low_res(country)
     if boundary.crs != gdf_data.crs:
@@ -562,6 +569,12 @@ def zonal_onshore(country, data):
 
     
 def zonal_onshore_globe(data):
+    """
+    Returns geodataframe clipped to global land:  e.g. for after zonal stats dataframe production
+    Args:
+        data: dataframe with a geometry column
+    """
+
     gdf_data = gpd.GeoDataFrame(data, geometry = data['geometry'])
     boundary = global_low_res()
     if boundary.crs != gdf_data.crs:
