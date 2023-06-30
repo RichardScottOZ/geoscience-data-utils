@@ -627,7 +627,7 @@ def zonal_onshore_globe(data):
     
 def location_sample(gdf, da, name_col):
     """
-    Returns built in global low res world polygons for cheap clipping filtered to one country
+    Returns a dataframe of points sample from a DataArray by location at once
     Args:
         gdf: geodataframe of points
         da: DataArrau to sample:
