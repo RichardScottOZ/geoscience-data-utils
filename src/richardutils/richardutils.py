@@ -463,10 +463,10 @@ def mmnorm(da):
         da: A DataArray
 
     Returns:
-        The squarest root.
+        normalised DataArray
 
     Examples:
-    mnorm(geoscience_raster)
+        mnorm(geoscience_raster)
     """
 
     da_norm = (da - da.min(skipna=True))/(da.max(skipna=True) - da.min(skipna=True))
@@ -485,7 +485,7 @@ def norm_diff_comparison(da1, da2):
         difference and ratio of reprojected match DataArrays
 
     Examples:
-    norm_diff_comparison(daarea1, daarea2):
+        norm_diff_comparison(daarea1, daarea2):
     """
 
     da1 = da1.rio.reproject_match(da2)
@@ -533,7 +533,7 @@ def zonal_stats(vector_data, measurements, dalike, variable):
         zonal stats dataframe
 
     Examples:
-    gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
+        gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
     """
 
     out_grid = make_geocube(
@@ -652,7 +652,8 @@ def tif_dict(strpath):
     Args:
         strpath: directory name
         
-     Example: tif_dict(r'D:\BananaSplits'
+     Examples: 
+        tif_dict(r'D:\BananaSplits'
     
     """
 
@@ -673,7 +674,8 @@ def df_bb(df, gdfclip, x, y):
         df: dataframe of data with x, y coords
         x, y: string names of x and y columns in df
         
-    Example: scy = df_bb(sc, olympus_mons, 'longitude', 'latitude' )
+    Examples: 
+        scy = df_bb(sc, olympus_mons, 'longitude', 'latitude' )
     
     """
 
