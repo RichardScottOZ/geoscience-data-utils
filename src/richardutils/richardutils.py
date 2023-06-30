@@ -647,6 +647,8 @@ def tif_dict(strpath):
     Walks a directory of geotiffs and returns a dictionary of rioxarray DataArrays
     Args:
         strpath: directory name
+        
+     Example: tif_dict(r'D:\BananaSplits'
     
     """
 
