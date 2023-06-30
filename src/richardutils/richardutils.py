@@ -591,4 +591,15 @@ def location_sample(gdf, da, name_col):
     dfda = dapt.to_dataframe().reset_index()    
     
     return dfda
+
     
+def tif_dict(strpath):
+    check_dict = {}
+    for root, dirs, files in os.walk(strpath):
+        for file in files:
+            if '.tif' in file and '.xml' not in file:
+                check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file))    
+                
+     return check_dict
+     
+     
