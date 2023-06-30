@@ -602,4 +602,20 @@ def tif_dict(strpath):
                 
      return check_dict
      
-     
+
+def df_bb(df, gdfclip, x, y):     
+    """
+    Returns dataframe of points clipped by geodataframe total bounds
+    Args:
+        gdf: geodataframe of points
+        df: dataframe of data with x, y coords
+        x, y: string names of x and y columns in df
+    
+    """
+
+    ndy = df.loc[df[x] > dfclip.total_bounds[0]]
+    ndy = ndy.loc[ndy[x] < dfclip.total_bounds[2]]
+    ndy = ndy.loc[ndy[y] > dfclip.total_bounds[1]]
+    ndy = ndy.loc[ndy[y] < dfclip.total_bounds[3]]
+    
+    return ndy
