@@ -426,7 +426,6 @@ def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
     Args:
         da: A DataArray
 
-        
 
     Examples:
     
@@ -667,6 +666,8 @@ def df_bb(df, gdfclip, x, y):
         gdf: geodataframe of points
         df: dataframe of data with x, y coords
         x, y: string names of x and y columns in df
+        
+    Example: scy = df_bb(sc, olympus_mons, 'longitude', 'latitude' )
     
     """
 
