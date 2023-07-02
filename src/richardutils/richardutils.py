@@ -663,7 +663,7 @@ def tif_dict(strpath):
             if '.tif' in file and '.xml' not in file:
                 check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file))    
                 
-     return check_dict
+    return check_dict
      
 
 def df_bb(df, gdfclip, x, y):     
@@ -685,3 +685,8 @@ def df_bb(df, gdfclip, x, y):
     ndy = ndy.loc[ndy[y] < dfclip.total_bounds[3]]
     
     return ndy
+
+def clip_da(dapath, gdfpath):
+    da = rioxarray.open_rasterio(dapath)
+    gdf = gpd.read_file(gdfpath)
+    clipped = da.rio.clip(gdf.geometry.values, gdf.crs, drop=True, invert=False)
