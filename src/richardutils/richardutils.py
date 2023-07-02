@@ -498,7 +498,7 @@ def norm_diff_comparison(da1, da2):
         
     
     
-def makegdf(df, xcol, ycol, crs):
+def makegdf(df, xcol='longitude', ycol='latitude', crs):
     """
     Turn a dataframe of a csv of points into a geodataframe
 
