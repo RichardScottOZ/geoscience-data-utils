@@ -618,6 +618,7 @@ def world_low_res(country):
 def zonal_onshore(country, data):
     """
     Returns geodataframe clipped to a country low res boundary: e.g. for after zonal stats dataframe production
+    
     Args:
         country: string of desired country border e.g. Australia
         data: ataframe with a geometry column
@@ -639,10 +640,11 @@ def zonal_onshore(country, data):
 def zonal_onshore_globe(data):
     """
     Returns geodataframe clipped to global land:  e.g. for after zonal stats dataframe production
+    
     Args:
         data: dataframe with a geometry column
     Returns:
-        onshore zonal data
+        Onshore zonal data
         
     """
 
@@ -659,12 +661,14 @@ def zonal_onshore_globe(data):
 def location_sample(gdf, da, name_col):
     """
     Returns a dataframe of points sample from a DataArray by location at once
+    
     Args:
         gdf: geodataframe of points
         da: DataArrau to sample:
         name_col: String to identify the location names
+        
     Returns:
-        onshore location sample dataframe
+        Onshore location sample dataframe
     
     """
 
@@ -704,10 +708,14 @@ def tif_dict(strpath):
 def df_bb(df, bb, xcol='longitude', ycol='latitude'):
     """
     Returns dataframe of points clipped by geodataframe total bounds
+    
     Args:
         gdf: geodataframe of points
         df: dataframe of data with x, y coords
         x, y: string names of x and y columns in df
+    
+    Returns:
+        Dataframe filtered to bounding box
         
     Examples: 
         schaus = df_bb(schworld, [sch.longitude.min(),sch.latitude.min(),sch.longitude.max(),sch.latitude.max()],'Longitude','Latitude')
@@ -723,6 +731,23 @@ def df_bb(df, bb, xcol='longitude', ycol='latitude'):
 
 
 def clip_da(dapath, gdfpath):
+    """
+    Clips a rioxarray by geodataframe polygons
+    
+    Args:
+        dapath: Path to raster
+        gdfpath: Path to vector polygon dataset
+    
+    Returns:
+        Clipped rioxarray
+        
+    Examples: 
+        schaus = df_bb(schworld, [sch.longitude.min(),sch.latitude.min(),sch.longitude.max(),sch.latitude.max()],'Longitude','Latitude')
+    
+    """
+
     da = rioxarray.open_rasterio(dapath)
     gdf = gpd.read_file(gdfpath)
     clipped = da.rio.clip(gdf.geometry.values, gdf.crs, drop=True, invert=False)
+    
+    return clipped
