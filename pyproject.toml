@@ -3,8 +3,8 @@ requires = ["setuptools>=65.0", "setuptools-scm>=7.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mypackage"
-authors = [{ name="mypackage authors"},]
+name = "richardutils"
+authors = [{ name="richardutils authors"},]
 description = "A GitHub template for Python packages."
 dynamic = ["version"]
 requires-python = ">=3.8"
@@ -43,7 +43,7 @@ dev = [
 ]
 
 [project.scripts]
-mycli = "mypackage.cli:cli"
+richardcli = "richardutils.cli:cli"
 
 [project.urls]
 "repository" = "https://github.com/scienxlab/python-package-template"
@@ -52,16 +52,16 @@ mycli = "mypackage.cli:cli"
 # Write version to file for better start performance, eg of CLI.
 # See https://github.com/pypa/setuptools_scm/issues/793
 # Do not include the _vesion.py file in source control.
-write_to = "src/mypackage/_version.py"
+write_to = "src/richardutils/_version.py"
 
 [tool.pytest.ini_options]
 # http://doc.pytest.org/en/latest/customize.html
-addopts = "--doctest-modules --ignore=docs --cov=mypackage"
+addopts = "--doctest-modules --ignore=docs --cov=richardutils"
 
 [tool.coverage.run]
 # https://coverage.readthedocs.io/en/latest/config.html
 omit = [
-    "src/mypackage/__init__.py",
-    "src/mypackage/__main__.py",
-    "src/mypackage/_version.py",
+    "src/richardutils/__init__.py",
+    "src/richardutils/__main__.py",
+    "src/richardutils/_version.py",
 ]
