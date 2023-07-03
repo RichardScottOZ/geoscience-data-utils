@@ -764,18 +764,18 @@ def extract_band(tifpath, findstr):
         geotiff band
         
     Examples: 
-        extract_band(usepath, 'ROCK')
+        darock = extract_band(usepath, 'ROCK')
     
     """
 
     print("finding band:", findstr)
-    da = rioxarray.open_rasterio(strpath, masked=True)
+    da = rioxarray.open_rasterio(tifpath, masked=True)
     for idx, name in enumerate(da.attrs['long_name']):
         
         if name == findstr:
-            print(os.path.basename(strpath))
+            print(os.path.basename(tifpath))
             da.attrs['long_name'] = findstr
-            newpath = strpath.replace('.tif', '_' + findstr + '.tif')
+            newpath = tifpath.replace('.tif', '_' + findstr + '.tif')
             print(newpath)
             
             da[idx].rio.to_raster(newpath)
