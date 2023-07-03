@@ -393,6 +393,7 @@ def plothist_combo(da, da2, title, color1='Orange',color2='Gold', savefig=True, 
         if slide_dict is not None:        
             slide_dict[title] = title + '.png'  
 
+
 def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None, size=7):
     """
     Plot a gepdataframe with a title.
@@ -452,8 +453,7 @@ def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
             slide_dict[title] = title + '.png'
         
     return ax
-            
-    
+   
         
 def mmnorm(da):
     """
@@ -497,7 +497,6 @@ def norm_diff_comparison(da1, da2):
     return diff, ratio
         
     
-    
 def makegdf(df, xcol='longitude', ycol='latitude', crs='EPSG:4326'):
     """
     Turn a dataframe of a csv of points into a geodataframe
@@ -511,7 +510,7 @@ def makegdf(df, xcol='longitude', ycol='latitude', crs='EPSG:4326'):
         gdf geodataframe
 
     Examples:
-    gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
+        gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
     """
 
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df[xcol],df[ycol], crs=crs))
@@ -533,7 +532,7 @@ def df_bb(df, bb, xcol='longitude', ycol='latitude'):
         df trimmed to bounding box
 
     Examples:
-    dfbb = df_bb(df,bb, 'longitude','latitude')    
+        dfbb = df_bb(df,bb, 'longitude','latitude')    
     """
 
     dfbb = df.loc[df.xcol > bb[0]]
@@ -605,6 +604,8 @@ def world_low_res(country):
     Returns built in global low res world polygons for cheap clipping filtered to one country
     Args:
         country: string of desired country border e.g. Australia
+        
+    Returns: low res country geodataframe
     
     """
     world_filepath = gpd.datasets.get_path('naturalearth_lowres')
@@ -676,9 +677,10 @@ def tif_dict(strpath):
     Walks a directory of geotiffs and returns a dictionary of rioxarray DataArrays
     Args:
         strpath: directory name
+    Returns a dictionary of rioxarrays
         
-     Examples: 
-        tif_dict(r'D:\BananaSplits'
+    Examples: 
+       tif_dict(r'D:\BananaSplits')
     
     """
 
