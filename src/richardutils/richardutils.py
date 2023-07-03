@@ -482,7 +482,7 @@ def norm_diff_comparison(da1, da2):
         da1, da2: DataArrays
 
     Returns:
-        difference and ratio of reprojected match DataArrays
+        Difference and ratio of reprojected match DataArrays
 
     Examples:
         norm_diff_comparison(daarea1, daarea2):
@@ -588,10 +588,10 @@ def zonal_stats(vector_data, measurements, dalike, variable):
     return zonal_stats_out    
     
 
-
 def global_low_res():
     """
-    Returns built in global low res world polygons for cheap clipping
+    Returns:
+        built in global low res world polygons for cheap clipping
     """
     world_filepath = gpd.datasets.get_path('naturalearth_lowres')
     world = gpd.read_file(world_filepath)
@@ -601,12 +601,11 @@ def global_low_res():
 
 def world_low_res(country):
     """
-    Returns built in global low res world polygons for cheap clipping filtered to one country
     Args:
         country: string of desired country border e.g. Australia
-        
-    Returns: low res country geodataframe
-    
+    Returns: 
+        Built in global low res world polygons for cheap clipping filtered to one country
+
     """
     world_filepath = gpd.datasets.get_path('naturalearth_lowres')
     world = gpd.read_file(world_filepath)
@@ -622,6 +621,9 @@ def zonal_onshore(country, data):
     Args:
         country: string of desired country border e.g. Australia
         data: ataframe with a geometry column
+        
+    Returns:
+        onshore lowres clipped geodataframe
     """
 
     gdf_data = gpd.GeoDataFrame(data, geometry = data['geometry'])
@@ -639,6 +641,9 @@ def zonal_onshore_globe(data):
     Returns geodataframe clipped to global land:  e.g. for after zonal stats dataframe production
     Args:
         data: dataframe with a geometry column
+    Returns:
+        onshore zonal data
+        
     """
 
     gdf_data = gpd.GeoDataFrame(data, geometry = data['geometry'])
@@ -658,6 +663,8 @@ def location_sample(gdf, da, name_col):
         gdf: geodataframe of points
         da: DataArrau to sample:
         name_col: String to identify the location names
+    Returns:
+        onshore location sample dataframe
     
     """
 
@@ -667,8 +674,8 @@ def location_sample(gdf, da, name_col):
     yl = xr.DataArray(lat, dims=['location'],coords={"location":da[name_col].tolist()})
     
     dapt = da.sel(x=xl,y=yl,method="nearest")
-    dfda = dapt.to_dataframe().reset_index()    
-    
+    dfda = dapt.to_dataframe().reset_index()  
+   
     return dfda
 
     
@@ -677,7 +684,8 @@ def tif_dict(strpath):
     Walks a directory of geotiffs and returns a dictionary of rioxarray DataArrays
     Args:
         strpath: directory name
-    Returns a dictionary of rioxarrays
+    Returns:
+        a dictionary of rioxarrays
         
     Examples: 
        tif_dict(r'D:\BananaSplits')
