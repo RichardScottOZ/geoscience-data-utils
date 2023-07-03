@@ -1,18 +1,18 @@
 # Development
 
-If you'd like to develop `mypackage`, this page should help you get started.
+If you'd like to develop `richardutils`, this page should help you get started.
 
 
 ## Installation
 
 You can install this package with `pip`. The `dev` option will install the packages you need for testing and building the documentation.
 
-    pip install mypackage[dev]
+    pip install richardutils[dev]
 
 
 ## Contributing
 
-If you'd like to contribute pull requests back to the main `mypackage ` project, please see [`CONTRIBUTING.md`](https://github.com/scienxlab/mypackage/blob/main/CONTRIBUTING.md).
+If you'd like to contribute pull requests back to the main `richardutils ` project, please see [`CONTRIBUTING.md`](https://github.com/scienxlab/richardutils/blob/main/CONTRIBUTING.md).
 
 
 ## Testing
@@ -32,7 +32,7 @@ Building the project requires `build`, so first:
 
     python -m pip install build
 
-Then to build `mypackage` locally:
+Then to build `richardutils` locally:
 
     python -m build
 

@@ -6,7 +6,7 @@
    `Fork on GitHub <https://github.com/scienxlab/python-package-template>`_
 
 
-mypackage
+richardutils
 =========
 
     | A sample Python package to use as a template for others.
@@ -22,8 +22,8 @@ Create a new package using `python-package-template` as a template.
 
 Clone your version of the new package using `git`.
 
-Do a global search and replace of `mypackage` for your package name. 
-Also look for `mycli` and `myfunction`.
+Do a global search and replace of `richardutils` for your package name. 
+Also look for `richardcli` and `richardfunction`.
 
 
 User guide
@@ -44,7 +44,7 @@ API reference
     :maxdepth: 2
     :caption: API reference
 
-    mypackage
+    richardutils
 
 
 Other resources
@@ -73,7 +73,7 @@ Indices and tables
     :caption: Project links
     :hidden:
 
-    PyPI releases <https://pypi.org/project/mypackage/>
+    PyPI releases <https://pypi.org/project/richardutils/>
     Code in GitHub <https://github.com/scienxlab/python-package-template>
     Issue tracker <https://github.com/scienxlab/python-package-template/issues>
     Scienxlab's software <https://github.com/scienxlab>
