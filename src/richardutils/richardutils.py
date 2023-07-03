@@ -518,6 +518,7 @@ def makegdf(df, xcol='longitude', ycol='latitude', crs='EPSG:4326'):
     
     return gdf
 
+
 def df_bb(df, bb, xcol='longitude', ycol='latitude'):
     """
     Turn a dataframe of a csv of points into a geodataframe
@@ -690,7 +691,7 @@ def tif_dict(strpath):
     return check_dict
      
 
-def df_bb(df, gdfclip, x, y):     
+def df_bb(df, bb, xcol='longitude', ycol='latitude'):
     """
     Returns dataframe of points clipped by geodataframe total bounds
     Args:
@@ -699,7 +700,7 @@ def df_bb(df, gdfclip, x, y):
         x, y: string names of x and y columns in df
         
     Examples: 
-        scy = df_bb(sc, olympus_mons, 'longitude', 'latitude' )
+        schaus = df_bb(schworld, [sch.longitude.min(),sch.latitude.min(),sch.longitude.max(),sch.latitude.max()],'Longitude','Latitude')
     
     """
 
@@ -709,6 +710,7 @@ def df_bb(df, gdfclip, x, y):
     ndy = ndy.loc[ndy[y] < dfclip.total_bounds[3]]
     
     return ndy
+
 
 def clip_da(dapath, gdfpath):
     da = rioxarray.open_rasterio(dapath)
