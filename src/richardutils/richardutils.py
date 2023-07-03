@@ -751,3 +751,16 @@ def clip_da(dapath, gdfpath):
     clipped = da.rio.clip(gdf.geometry.values, gdf.crs, drop=True, invert=False)
     
     return clipped
+
+
+def extract_band(tifpath, findstr):
+    print("finding band:", findstr)
+    da = rioxarray.open_rasterio(strpath, masked=True)
+    for idx, name in enumerate(da.attrs['long_name']):
+        
+        if name == findstr:
+            print(os.path.basename(strpath))
+            da.attrs['long_name'] = findstr
+            newpath = strpath.replace('.tif', '_' + findstr + '.tif')
+            print(newpath)
+            da[idx].rio.to_raster(newpath)
