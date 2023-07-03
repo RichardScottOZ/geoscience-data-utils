@@ -498,7 +498,7 @@ def norm_diff_comparison(da1, da2):
         
     
     
-def makegdf(df, xcol='longitude', ycol='latitude', crs):
+def makegdf(df, xcol='longitude', ycol='latitude', crs='EPSG:4326'):
     """
     Turn a dataframe of a csv of points into a geodataframe
 
@@ -517,6 +517,30 @@ def makegdf(df, xcol='longitude', ycol='latitude', crs):
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df[xcol],df[ycol], crs=crs))
     
     return gdf
+
+def df_bb(df, bb, xcol='longitude', ycol='latitude'):
+    """
+    Turn a dataframe of a csv of points into a geodataframe
+
+    Args:
+        df: a dataframe from csv
+        xcol: x coordinate [longitude, easting etc.]
+        ycol: y coordinate
+        bb: a bounding box
+
+    Returns:
+        df trimmed to bounding box
+
+    Examples:
+    dfbb = df_bb(df,bb, 'longitude','latitude')    
+    """
+
+    dfbb = df.loc[df.xcol > bb[0]]
+    dfbb = dfbb.loc[df.xcol < bb[2]]
+    dfbb = dfbb.loc[df.ycol > bb[1]]
+    dfbb = dfbb.loc[df.ycol < bb[3]]
+    
+    return dfbb
 
 
 def zonal_stats(vector_data, measurements, dalike, variable):
