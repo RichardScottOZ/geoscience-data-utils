@@ -754,6 +754,20 @@ def clip_da(dapath, gdfpath):
 
 
 def extract_band(tifpath, findstr):
+    """
+    Extract a named band from a geotiff via rioxarray
+    
+    Args:
+        tifpath: Path to raster
+    
+    Returns:
+        geotiff band
+        
+    Examples: 
+        extract_band(usepath, 'ROCK')
+    
+    """
+
     print("finding band:", findstr)
     da = rioxarray.open_rasterio(strpath, masked=True)
     for idx, name in enumerate(da.attrs['long_name']):
@@ -763,4 +777,10 @@ def extract_band(tifpath, findstr):
             da.attrs['long_name'] = findstr
             newpath = strpath.replace('.tif', '_' + findstr + '.tif')
             print(newpath)
+            
             da[idx].rio.to_raster(newpath)
+            
+            return da[idx]
+            
+            
+            
