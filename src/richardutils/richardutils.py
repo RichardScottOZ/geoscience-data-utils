@@ -357,6 +357,117 @@ def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cli
         if slide_dict is not None:
             slide_dict[title] = title + '.png'
         
+
+def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False):
+    """
+    Plot a dataarray with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        da: A DataArray
+        robust: clip to 2/98 or not
+        cmap: a matplotlib colormap
+        size: integer size of plot
+        title: string title of plot
+        clip: quantile number to clip to
+        savefig: save png to directory
+        slide_dict: add png path to a dictionary
+        background: plot a background shape layer
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    
+    """
+
+    fig, ax = plt.subplots(figsize=(size,size))
+    if background is False:
+        pass
+    elif background is True:
+        daback = da / da
+        da.plot(cmap='Greys')
+    
+    else:
+        background.plot()
+        
+    if clip is not None:
+        quantile = np.nanpercentile(da, clip)
+        da.plot(cmap=cmap, robust=robust, ax=ax, vmax=quantile)
+    else:
+        da.plot(cmap=cmap, robust=robust, ax=ax)
+    plt.title(title)
+    ax.axes.set_aspect('equal')
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')
+        if slide_dict is not None:
+        
+        
+            slide_dict[title] = title + '.png'
+            
+            
+def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False):
+    """
+    Plot a dataarray with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        da: A DataArray
+        robust: clip to 2/98 or not
+        cmap: a matplotlib colormap
+        size: integer size of plot
+        title: string title of plot
+        clip: quantile number to clip to
+        savefig: save png to directory
+        slide_dict: add png path to a dictionary
+        background: plot a background shape layer if True is passed based on the DataArray, if a da is passed, use that - assumes data > 0
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    
+    """
+
+    fig, ax = plt.subplots(figsize=(size,size))
+    if background is False:
+        pass
+    elif background is True:
+        daback = da / da
+        daback.plot(cmap='Greys',ax=ax)
+        x_range = plt.xlim()
+        y_range = plt.ylim()
+    
+    else:
+        background.plot(add_colorbar=False,cmap='Greys',ax=ax)
+        x_range = plt.xlim()
+        y_range = plt.ylim()
+        
+    da = da.where(da >=0, drop=True)
+    
+    if clip is not None:
+        quantile = np.nanpercentile(da, clip)
+        da.plot(cmap=cmap, robust=robust, ax=ax, vmax=quantile)
+    else:
+        x_range = plt.xlim()
+        y_range = plt.ylim()
+        
+        da.plot(cmap=cmap, robust=robust, ax=ax)
+        
+    plt.title(title)
+    ax.axes.set_aspect('equal')
+    ax.set_xlim(x_range)
+    ax.set_ylim(y_range)
+
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')
+        if slide_dict is not None:
+        
+        
+            slide_dict[title] = title + '.png'
+            
         
 def plothist(da, title, color='Orange', savefig=True, slide_dict = None):
     da.plot.hist(density=True, color=color)
