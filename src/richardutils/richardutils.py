@@ -20,6 +20,7 @@ import xarray as xr
 
 import geopandas as gpd
 
+import rioxarray
 import geocube
 from geocube.api.core import make_geocube
 
@@ -407,7 +408,7 @@ def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cli
             slide_dict[title] = title + '.png'
             
             
-def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False):
+def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False, alpha=0.999):
     """
     Plot a dataarray with a title.
     Allow saving to a png
@@ -425,7 +426,7 @@ def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title
         background: plot a background shape layer if True is passed based on the DataArray, if a da is passed, use that - assumes data > 0
 
     Returns:
-        The squarest root.
+        
 
     Examples:
     
@@ -436,7 +437,7 @@ def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title
         pass
     elif background is True:
         daback = da / da
-        daback.plot(cmap='Greys',ax=ax)
+        daback.plot(cmap='Greys',ax=ax, alpha=alpha)
         x_range = plt.xlim()
         y_range = plt.ylim()
     
@@ -505,7 +506,7 @@ def plothist_combo(da, da2, title, color1='Orange',color2='Gold', savefig=True, 
             slide_dict[title] = title + '.png'  
 
 
-def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None, size=7):
+def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None, size=7, legend=False):
     """
     Plot a gepdataframe with a title.
     Allow saving to a png
@@ -525,7 +526,7 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
     
     """
 
-    gdf.plot(column=column,  alpha=alpha, cmap=cmap)
+    gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend)
     plt.title(title)
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')     
