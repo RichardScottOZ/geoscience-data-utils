@@ -647,10 +647,10 @@ def df_bb(df, bb, xcol='longitude', ycol='latitude'):
         dfbb = df_bb(df,bb, 'longitude','latitude')    
     """
 
-    dfbb = df.loc[df.xcol > bb[0]]
-    dfbb = dfbb.loc[df.xcol < bb[2]]
-    dfbb = dfbb.loc[df.ycol > bb[1]]
-    dfbb = dfbb.loc[df.ycol < bb[3]]
+    dfbb = df.loc[df[xcol] > bb[0]]
+    dfbb = dfbb.loc[df[xcol] < bb[2]]
+    dfbb = dfbb.loc[df[ycol] > bb[1]]
+    dfbb = dfbb.loc[df[ycol] < bb[3]]
     
     return dfbb
 
@@ -669,7 +669,7 @@ def zonal_stats(vector_data, measurements, dalike, variable):
         zonal stats dataframe
 
     Examples:
-        gdf = makegdf(df,'longitude','latitude','EPSG:4326')    
+        gdf = zonal_stats(gdf,'USEID',da,'LASERBLASTRADIUS)    
     """
 
     out_grid = make_geocube(
@@ -817,29 +817,6 @@ def tif_dict(strpath):
     return check_dict
      
 
-def df_bb(df, bb, xcol='longitude', ycol='latitude'):
-    """
-    Returns dataframe of points clipped by geodataframe total bounds
-    
-    Args:
-        gdf: geodataframe of points
-        df: dataframe of data with x, y coords
-        x, y: string names of x and y columns in df
-    
-    Returns:
-        Dataframe filtered to bounding box
-        
-    Examples: 
-        schaus = df_bb(schworld, [sch.longitude.min(),sch.latitude.min(),sch.longitude.max(),sch.latitude.max()],'Longitude','Latitude')
-    
-    """
-
-    ndy = df.loc[df[x] > dfclip.total_bounds[0]]
-    ndy = ndy.loc[ndy[x] < dfclip.total_bounds[2]]
-    ndy = ndy.loc[ndy[y] > dfclip.total_bounds[1]]
-    ndy = ndy.loc[ndy[y] < dfclip.total_bounds[3]]
-    
-    return ndy
 
 
 def clip_da(dapath, gdfpath):
