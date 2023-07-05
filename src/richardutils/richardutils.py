@@ -653,6 +653,20 @@ def df_bb(df, bb, xcol='longitude', ycol='latitude'):
     dfbb = dfbb.loc[df[ycol] < bb[3]]
     
     return dfbb
+    
+    
+def gdf_bb(gdf, bb):
+    """
+    Returns a bounding box filtered gdf
+    
+    Args: 
+        gdf: geodataframe
+        bb: bounding box
+    """
+    gdfbb = gdf.cx[bb[0]:bb[2],bb[1]:bb[3]]
+    
+    return gdfbb
+    
 
 
 def zonal_stats(vector_data, measurements, dalike, variable):
@@ -816,7 +830,6 @@ def tif_dict(strpath):
                 
     return check_dict
      
-
 
 
 def clip_da(dapath, gdfpath):
