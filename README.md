@@ -76,7 +76,7 @@ Add more detail, folders etc.
 The package uses GitHub Actions for the automation of [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration). There are 2 so-called workflows:
 
 - `build_test.yml` &mdash; build and test the distribution using `pytest`.
-- `publish-docs.yml` &mdash; build and publish the documentation to GitHub pages. Note that this requires you to anble GitHub package on your repo.
+- `publish-docs.yml` &mdash; build and publish the documentation to GitHub pages. Note that this requires you to enable GitHub package on your repo.
 
 
 ## Publishing to PyPI
