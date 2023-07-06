@@ -24,7 +24,8 @@ classifiers = [
 ]
 dependencies = [
     "click",
-    "geopandas"
+    "geopandas",
+    "rioxarray"
 ]
 
 [project.optional-dependencies]
