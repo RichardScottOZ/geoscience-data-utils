@@ -5,7 +5,7 @@
 
 **A prototype GitHub template for a basic Python package.**
 
-This template repository implements a Python package, `mypackage` that contains a single module with a single function `myfunction`, accessible at the package level (i.e. you can do `mypackage.myfunction`, my assumption being that if you ever want submodules, you'll be able to implement it by that point in your Python journey).
+This template repository implements a Python package, `richardutils` that contains a single module with a single function `richardfunction`, accessible at the package level (i.e. you can do `richardutils.richardfunction`, my assumption being that if you ever want submodules, you'll be able to implement it by that point in your Python journey).
 
 It has most of the features you might want in a Python project:
 
@@ -24,9 +24,9 @@ When you make a new repository in the GitHub interface, select `python-package-t
 Then search and replace the placeholder names with your project's names. This will involve changing some file names and directory names. These are:
 
 - `python-package-template` (ususally a GitHub repo has the same name as the package it contains, but not this one)
-- `mypackage`
-- `mycli`
-- `myfunction`
+- `richardutils`
+- `richardcli`
+- `richardfunction`
 
 You should alos change `LICENSE` if you want to use a different one, and the content of `AUTHORS.md`.
 
@@ -37,14 +37,14 @@ To install the package, before or after changing its name, you can use `pip inst
 
 To build an `sdist` and `wheel` for `pip` to install (it can use either; wheels are the 'modern' way), you can do `python -m build`. 
 
-Note: building the project makes a file called `src/mypackage/_version.py` which must not be checked into version control, hence it is included in `.gitignore`.
+Note: building the project makes a file called `src/richardutils/_version.py` which must not be checked into version control, hence it is included in `.gitignore`.
 
 
 ## Command line interface
 
-As well as the Python package with its API, the package also implements a command line interface, or CLI, called `mycli` using Python's `script` entry point. So after installing with `pip`, there is a command-line tool you can invoke with `mycli --help`. The CLI is implemented with a popular tool called [`click`](https://click.palletsprojects.com/en/latest/).
+As well as the Python package with its API, the package also implements a command line interface, or CLI, called `richardcli` using Python's `script` entry point. So after installing with `pip`, there is a command-line tool you can invoke with `richardcli --help`. The CLI is implemented with a popular tool called [`click`](https://click.palletsprojects.com/en/latest/).
 
-You can also invoke the CLI by running the module with `python -m mypackage`, which relies on `__main__.py`. So many ways to run Python code!
+You can also invoke the CLI by running the module with `python -m richardutils`, which relies on `__main__.py`. So many ways to run Python code!
 
 
 ## Tests
