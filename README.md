@@ -28,7 +28,7 @@ Then search and replace the placeholder names with your project's names. This wi
 - `richardcli`
 - `richardfunction`
 
-You should alos change `LICENSE` if you want to use a different one, and the content of `AUTHORS.md`.
+You should also change `LICENSE` if you want to use a different one, and the content of `AUTHORS.md`.
 
 
 ## Installing and building
@@ -69,13 +69,14 @@ This package uses [the Furo theme](https://pradyunsg.me/furo/), but it's easy en
 
 The documentation builds as [a GitHub Action](https://github.com/scienxlab/python-package-template/blob/main/.github/workflows/publish-docs.yml) and [is deployed here](http://scienxlab.org/python-package-template/).
 
+Add more detail, folders, branches etc.
 
 ## Continuous integration
 
 The package uses GitHub Actions for the automation of [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration). There are 2 so-called workflows:
 
 - `build_test.yml` &mdash; build and test the distribution using `pytest`.
-- `publish-docs.yml` &mdash; build and publish the documentation to GitHub pages. Note that this requires you to anble GitHub package on your repo.
+- `publish-docs.yml` &mdash; build and publish the documentation to GitHub pages. Note that this requires you to enable GitHub package on your repo.
 
 
 ## Publishing to PyPI

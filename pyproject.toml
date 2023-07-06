@@ -24,6 +24,10 @@ classifiers = [
 ]
 dependencies = [
     "click",
+    "geopandas",
+    "rioxarray",
+    "geocube",
+    "matplotlib"
 ]
 
 [project.optional-dependencies]
