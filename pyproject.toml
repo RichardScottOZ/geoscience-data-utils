@@ -26,6 +26,7 @@ dependencies = [
     "click",
     "geopandas",
     "rioxarray",
+    "geocube",
     "matplotlib"
 ]
 
