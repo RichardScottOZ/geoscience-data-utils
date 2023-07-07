@@ -1,34 +1,20 @@
-# python-package-template
 
-[![Tests](https://github.com/scienxlab/python-package-template/actions/workflows/build-test.yml/badge.svg)](https://github.com/scienxlab/python-package-template/actions/workflows/build-test.yml)
-[![Docs](https://github.com/scienxlab/python-package-template/actions/workflows/publish-docs.yml/badge.svg)](https://github.com/scienxlab/python-package-template/actions/workflows/publish-docs.yml)
+# richardutils
 
-**A prototype GitHub template for a basic Python package.**
+## Overview
+A few geoscience analysis helper functions I use ad hoc for:
 
-This template repository implements a Python package, `richardutils` that contains a single module with a single function `richardfunction`, accessible at the package level (i.e. you can do `richardutils.richardfunction`, my assumption being that if you ever want submodules, you'll be able to implement it by that point in your Python journey).
+- Creating geodataframes from csv
+- Reading a directory of geotiffs into rioxarray
+- Sampling rioxarrays at point locations
+- Clipping rioxarrays
+- Plotting rioxarrays
+- Extracting a band from a rioxarray
+- Zonal statistics
 
-It has most of the features you might want in a Python project:
+## Documentation
 
-- Some code that does something useful (not much, in this case!).
-- A modern, PEP-517-style build process.
-- A command-line interface.
-- Tests, run automatically on GitHub Actions.
-- Documentation, published to GitHub Pages.
-- Publishing to PyPI ready to go.
-
-
-## How to use this template
-
-When you make a new repository in the GitHub interface, select `python-package-template` in the **Repository template** dropdown menu.
-
-Then search and replace the placeholder names with your project's names. This will involve changing some file names and directory names. These are:
-
-- `python-package-template` (ususally a GitHub repo has the same name as the package it contains, but not this one)
-- `richardutils`
-- `richardcli`
-- `richardfunction`
-
-You should also change `LICENSE` if you want to use a different one, and the content of `AUTHORS.md`.
+- Simple in progress https://richardscottoz.github.io/richardutils/
 
 
 ## Installing and building
@@ -79,13 +65,3 @@ The package uses GitHub Actions for the automation of [continuous integration](h
 - `publish-docs.yml` &mdash; build and publish the documentation to GitHub pages. Note that this requires you to enable GitHub package on your repo.
 
 
-## Publishing to PyPI
-
-At some point, you may want to publish your package to PyPI. There is a disabled GitHub action to help you do this, but you'll need to put some other things in place before you can use it:
-
-- Create an account on PyPI, or get the credentials for an existing account.
-- Create a project for the package.
-- Create a token for publishing to the project.
-- Install a repository secret on the GitHub project called `PYPI_API_TOKEN` with the value of the token.
-- Install the `pypi-publish.yml` GitHub Action file (already in this repo) by removing `DISABLED` from the name.
-- Create a 'release' with an appropriate [semantic version](https://semver.org/) tag in the GitHub interface. The GitHub Action should publish it to PyPI.
