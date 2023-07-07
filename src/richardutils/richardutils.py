@@ -7,22 +7,20 @@ TODO: Needs requirements - but a standard bunch for geoscience: numpy,  matplotl
 """
 
 import math
-import numpy as np
 import os
+import copy
+
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
-import copy
-
 import xarray as xr
-
-import geopandas as gpd
-
 import rioxarray
 import geocube
 from geocube.api.core import make_geocube
+import geopandas as gpd
 
 def richardfunction(n: float) -> float:
     """
