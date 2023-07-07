@@ -67,7 +67,7 @@ The []`myst-nb` plugin](https://myst-nb.readthedocs.io/en/latest/) for Sphinx sh
 
 This package uses [the Furo theme](https://pradyunsg.me/furo/), but it's easy enough to change options like this in `docs/conf.py`.
 
-The documentation builds as [a GitHub Action](https://github.com/scienxlab/python-package-template/blob/main/.github/workflows/publish-docs.yml) and [is deployed here](http://scienxlab.org/python-package-template/).
+The documentation builds as [a GitHub Action](https://github.com/scienxlab/python-package-template/blob/main/.github/workflows/publish-docs.yml) and [is deployed here](https://richardscottoz.github.io/richardutils/).
 
 As a brief note: after the make html above, copy the files in the docs/_build/html folder created to the gh-pages branch root and commit.
 
