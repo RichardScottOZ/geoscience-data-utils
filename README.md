@@ -69,7 +69,7 @@ This package uses [the Furo theme](https://pradyunsg.me/furo/), but it's easy en
 
 The documentation builds as [a GitHub Action](https://github.com/scienxlab/python-package-template/blob/main/.github/workflows/publish-docs.yml) and [is deployed here](http://scienxlab.org/python-package-template/).
 
-Add more detail, folders, branches etc.
+As a brief note: after the make html above, copy the files in the docs/_build/html folder created to the gh-pages branch root and commit.
 
 ## Continuous integration
 
