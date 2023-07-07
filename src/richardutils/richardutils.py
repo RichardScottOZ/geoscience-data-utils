@@ -652,7 +652,7 @@ def zonal_stats(vector_data, measurements, dalike, variable):
         zonal stats dataframe
 
     Examples:
-        gdf = zonal_stats(gdf,'USEID',da,'LASERBLASTRADIUS)    
+        gdf = zonal_stats(gdf,'USEID',da,'LASERBLASTRADIUS')    
     """
 
     out_grid = make_geocube(
