@@ -765,8 +765,8 @@ def location_sample(gdf, da, name_col):
 
     lat = gdf.geometry.y.tolist()
     lon = gdf.geometry.x.tolist()
-    xl = xr.DataArray(lon, dims=['location'],coords={"location":da[name_col].tolist()})
-    yl = xr.DataArray(lat, dims=['location'],coords={"location":da[name_col].tolist()})
+    xl = xr.DataArray(lon, dims=['location'],coords={"location":gdf[name_col].tolist()})
+    yl = xr.DataArray(lat, dims=['location'],coords={"location":gdf[name_col].tolist()})
     
     dapt = da.sel(x=xl,y=yl,method="nearest")
     dfda = dapt.to_dataframe().reset_index()  
