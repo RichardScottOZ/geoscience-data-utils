@@ -435,6 +435,59 @@ def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title
             slide_dict[title] = title + '.png'
             
         
+def plotmapc(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False):
+    """
+    Plot a dataarray with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        da: A DataArray
+        robust: clip to 2/98 or not
+        cmap: a matplotlib colormap
+        size: integer size of plot
+        title: string title of plot
+        clip: quantile number to clip to
+        savefig: save png to directory
+        slide_dict: add png path to a dictionary
+        background: plot a background shape layer
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    
+    """
+
+    fig, ax = plt.subplots(figsize=(size,size))
+    if background is False:
+        pass
+    elif background is True:
+        daback = da / da
+        da.plot(cmap='Greys',add_colorbar=False, ax=ax)
+    
+    else:
+        background.plot()
+        
+    if clip is not None:
+        quantile = np.nanpercentile(da, clip)
+        im = da.plot(cmap=cmap, robust=robust, ax=ax, vmax=quantile,add_colorbar=False)
+    else:
+        im = da.plot(cmap=cmap, robust=robust, ax=ax, add_colorbar=False)
+    plt.title(title)
+    ax.axes.set_aspect('equal')
+    
+    cax = fig.add_axes([ax.get_position().x1+0.01,ax.get_position().y0,0.02,ax.get_position().height])
+    plt.colorbar(im, cax=cax) # Similar to fig.colorbar(im, cax = cax)
+
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')
+        if slide_dict is not None:
+        
+        
+            slide_dict[title] = title + '.png'
+
+        
 def plothist(da, title, color='Orange', savefig=True, slide_dict = None):
     da.plot.hist(density=True, color=color)
     plt.yscale('log')
@@ -774,16 +827,20 @@ def location_sample(gdf, da, name_col):
     return dfda
 
     
-def tif_dict(strpath):
+def tif_dict(strpath, masked=True, chunks=None, dsmatch=None):
     """
     Walks a directory of geotiffs and returns a dictionary of rioxarray DataArrays
     Args:
         strpath: directory name
+        chunks: tuple of integers
+        dsmatch: data array to match the directory of raster to
+        masked: whether to mask by nodata, default is yes, pass masked=False if not desired
     Returns:
         a dictionary of rioxarrays
         
     Examples: 
        tif_dict(r'D:\BananaSplits')
+       tif_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
@@ -791,7 +848,16 @@ def tif_dict(strpath):
     for root, dirs, files in os.walk(strpath):
         for file in files:
             if '.tif' in file and '.xml' not in file:
-                check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file))    
+                if dsmatch is None:
+                    if chunks is None:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file),masked=masked)    
+                    else:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks)    
+                else:
+                    if chunks is None:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked).rio.reproject_match(dsmatch)    
+                    else:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks).rio.reproject_match(dsmatch)    
                 
     return check_dict
      
