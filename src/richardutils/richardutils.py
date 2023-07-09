@@ -437,6 +437,8 @@ def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title
         
 def plotmapc(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False):
     """
+    Plots a dataarray and makes the colorbar the same height as the plot
+    
     Plot a dataarray with a title.
     Allow saving to a png
     Allow adding to a dictionary e.g. for presentation use
@@ -455,7 +457,7 @@ def plotmapc(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
     Returns:
         The squarest root.
 
-    Examples:
+    Examples: plotmapc(da_exploding_stars, cmap='magma', title='Exploding Stars')
     
     """
 
