@@ -483,6 +483,34 @@ Allow adding to a dictionary e.g. for presentation use</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.plotmapc">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">plotmapc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cetrainbow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Title</span> <span class="pre">Here'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slide_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.plotmapc" title="Permalink to this definition">#</a></dt>
+<dd><p>Plots a dataarray and makes the colorbar the same height as the plot</p>
+<p>Plot a dataarray with a title.
+Allow saving to a png
+Allow adding to a dictionary e.g. for presentation use</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>da</strong> – A DataArray</p></li>
+<li><p><strong>robust</strong> – clip to 2/98 or not</p></li>
+<li><p><strong>cmap</strong> – a matplotlib colormap</p></li>
+<li><p><strong>size</strong> – integer size of plot</p></li>
+<li><p><strong>title</strong> – string title of plot</p></li>
+<li><p><strong>clip</strong> – quantile number to clip to</p></li>
+<li><p><strong>savefig</strong> – save png to directory</p></li>
+<li><p><strong>slide_dict</strong> – add png path to a dictionary</p></li>
+<li><p><strong>background</strong> – plot a background shape layer</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The squarest root.</p>
+</dd>
+</dl>
+<p>Examples: plotmapc(da_exploding_stars, cmap=’magma’, title=’Exploding Stars’)</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.plotmapw">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">plotmapw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cetrainbow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Title</span> <span class="pre">Here'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slide_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.plotmapw" title="Permalink to this definition">#</a></dt>
 <dd><p>Plot a dataarray with a title. Remove colorbar in the way
@@ -517,16 +545,20 @@ Allow adding to a dictionary e.g. for presentation use</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.tif_dict">
-<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">tif_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.tif_dict" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">tif_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsmatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.tif_dict" title="Permalink to this definition">#</a></dt>
 <dd><p>Walks a directory of geotiffs and returns a dictionary of rioxarray DataArrays
-:param strpath: directory name</p>
+:param strpath: directory name
+:param chunks: tuple of integers
+:param dsmatch: data array to match the directory of raster to
+:param masked: whether to mask by nodata, default is yes, pass masked=False if not desired</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>a dictionary of rioxarrays</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>tif_dict(r’D:BananaSplits’)</p>
+<p>tif_dict(r’D:BananaSplits’)
+tif_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
 </dd></dl>
 
 <dl class="py function">
@@ -591,7 +623,7 @@ Allow adding to a dictionary e.g. for presentation use</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>gdf = zonal_stats(gdf,’USEID’,da,’LASERBLASTRADIUS)</p>
+<p>gdf = zonal_stats(gdf,’USEID’,da,’LASERBLASTRADIUS’)</p>
 </dd></dl>
 
 </section>
@@ -674,6 +706,7 @@ Allow adding to a dictionary e.g. for presentation use</p>
 <li><a class="reference internal" href="#richardutils.richardutils.plothist_combo"><code class="docutils literal notranslate"><span class="pre">plothist_combo()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmap"><code class="docutils literal notranslate"><span class="pre">plotmap()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmap_background"><code class="docutils literal notranslate"><span class="pre">plotmap_background()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.plotmapc"><code class="docutils literal notranslate"><span class="pre">plotmapc()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmapw"><code class="docutils literal notranslate"><span class="pre">plotmapw()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.richardfunction"><code class="docutils literal notranslate"><span class="pre">richardfunction()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.tif_dict"><code class="docutils literal notranslate"><span class="pre">tif_dict()</span></code></a></li>
