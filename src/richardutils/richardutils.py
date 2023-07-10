@@ -877,7 +877,7 @@ def clip_da(dapath, gdfpath):
         Clipped rioxarray
         
     Examples: 
-        schaus = df_bb(schworld, [sch.longitude.min(),sch.latitude.min(),sch.longitude.max(),sch.latitude.max()],'Longitude','Latitude')
+        schaus = clip_da('dapath', 'gdfpath')
     
     """
 
