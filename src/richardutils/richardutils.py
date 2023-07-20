@@ -19,6 +19,7 @@ import rioxarray
 import geocube
 from geocube.api.core import make_geocube
 import geopandas as gpd
+import fiona
 
 def richardfunction(n: float) -> float:
     """
@@ -688,6 +689,20 @@ def gdf_bb(gdf, bb):
     return gdfbb
     
 
+def gdb_dict(gdbpath):
+    """
+    Returns a dictionary of geodataframes
+    
+    Args: 
+        gdbpath: path to a FileGDB
+    """
+    gdb_dict = {}
+    for l in fiona.listlayers(gdpath):
+        gdb_dict[l] = gpd.read_file(gdbpath, driver='FileGDB', layer=l)
+    
+    return gdb_dict
+    
+
 
 def zonal_stats(vector_data, measurements, dalike, variable):
     """
@@ -886,6 +901,29 @@ def clip_da(dapath, gdfpath):
     clipped = da.rio.clip(gdf.geometry.values, gdf.crs, drop=True, invert=False)
     
     return clipped
+    
+
+def clip_dabox(dapath, bb):
+    """
+    Clips a rioxarray by geodataframe polygons
+    
+    Args:
+        dapath: Path to raster
+        bb: boundingbox coordinates xmin, ymin, xmax, ymax
+    
+    Returns:
+        Clipped rioxarray
+        
+    Examples: 
+        schaus = clip_dabox('dapath', bb)
+    
+    """
+
+    da = rioxarray.open_rasterio(dapath)
+    clipped = da.rio.clip_box(xmin = bb[0], ymin=bb[1],xmax=bb[2],ymax=bb[3])
+    
+    return clipped
+    
 
 
 def extract_band(tifpath, findstr):
