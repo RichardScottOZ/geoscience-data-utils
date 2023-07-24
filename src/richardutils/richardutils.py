@@ -546,9 +546,10 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
     Examples:
     
     """
-
-    gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend)
+    fig, ax = plt.subplots(figsize=(size,size))
+    gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend, ax-ax)
     plt.title(title)
+    ax.axes.set_aspect('equal')
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')     
         if slide_dict is not None:        
@@ -653,7 +654,7 @@ def makegdf(df, xcol='longitude', ycol='latitude', crs='EPSG:4326'):
 
 def df_bb(df, bb, xcol='longitude', ycol='latitude'):
     """
-    Turn a dataframe of a csv of points into a geodataframe
+    Clips a dataframe of points by a bounding box
 
     Args:
         df: a dataframe from csv
