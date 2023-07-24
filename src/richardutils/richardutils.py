@@ -547,7 +547,7 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
     
     """
     fig, ax = plt.subplots(figsize=(size,size))
-    gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend, ax-ax)
+    gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend, ax=ax)
     plt.title(title)
     ax.axes.set_aspect('equal')
     if savefig:
