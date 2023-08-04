@@ -27,7 +27,8 @@ dependencies = [
     "geopandas",
     "rioxarray",
     "geocube",
-    "matplotlib"
+    "matplotlib",
+    "xarray-spatial"
 ]
 
 [project.optional-dependencies]
