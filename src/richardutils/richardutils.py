@@ -7,6 +7,9 @@ Licence: MIT
 import math
 import os
 import copy
+import json
+import os
+from functools import partial
 
 import numpy as np
 import pandas as pd
@@ -14,12 +17,18 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
+import geopandas as gpd
+import fiona
+
 import xarray as xr
 import rioxarray
 import geocube
 from geocube.api.core import make_geocube
-import geopandas as gpd
-import fiona
+from geocube.rasterize import rasterize_points_griddata, rasterize_points_radial, rasterize_image
+
+import xrspatial
+from xrspatial import proximity
+
 
 def richardfunction(n: float) -> float:
     """
@@ -957,4 +966,40 @@ def extract_band(tifpath, findstr):
             return da[idx]
             
             
-            
+def rasterize_one(tilow, strpath, da):
+    """
+    Rasterize a geodataframe to a default one slow
+    
+    Args:
+        tilow: gdf
+        strpath: output geotif path
+        da: raster for resolution and bound to match
+    
+    Returns:
+        geotiff to file
+        
+    Examples: 
+        rasterize_one(gdf, outpath, darock)
+    
+    """
+
+    bb = da.rio.bounds()
+    geom=json.dumps(mapping(box(bb[0], bb[1], bb[2], bb[3])))
+
+    print(tilow.crs)
+    tilow['TIONE'] = 1
+
+    column = "TIONE"
+
+    out_grid = make_geocube(
+        vector_data=tilow,
+        measurements=[column],
+        resolution=da.rio.resolution(),
+        fill = 0,
+        geom = geom,
+        rasterize_function = partial(rasterize_image, all_touched=True)
+    )
+    out_grid[column].rio.write_nodata(255, inplace=True)
+    out_grid[column]=out_grid[column].astype('uint8')
+
+    out_grid[column].rio.to_raster(strpath)
