@@ -244,13 +244,32 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>schaus = df_bb(schworld, [sch.longitude.min(),sch.latitude.min(),sch.longitude.max(),sch.latitude.max()],’Longitude’,’Latitude’)</p>
+<p>schaus = clip_da(‘dapath’, ‘gdfpath’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.clip_dabox">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">clip_dabox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dapath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.clip_dabox" title="Permalink to this definition">#</a></dt>
+<dd><p>Clips a rioxarray by geodataframe polygons</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dapath</strong> – Path to raster</p></li>
+<li><p><strong>bb</strong> – boundingbox coordinates xmin, ymin, xmax, ymax</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Clipped rioxarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>schaus = clip_dabox(‘dapath’, bb)</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.df_bb">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">df_bb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xcol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'longitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ycol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'latitude'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.df_bb" title="Permalink to this definition">#</a></dt>
-<dd><p>Turn a dataframe of a csv of points into a geodataframe</p>
+<dd><p>Clips a dataframe of points by a bounding box</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -282,6 +301,17 @@
 </dl>
 <p class="rubric">Examples</p>
 <p>darock = extract_band(usepath, ‘ROCK’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.gdb_dict">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">gdb_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdbpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.gdb_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a dictionary of geodataframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gdbpath</strong> – path to a FileGDB</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -525,6 +555,26 @@ Allow adding to a dictionary e.g. for presentation use</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.rasterize_one">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">rasterize_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tilow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.rasterize_one" title="Permalink to this definition">#</a></dt>
+<dd><p>Rasterize a geodataframe to a default one slow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tilow</strong> – gdf</p></li>
+<li><p><strong>strpath</strong> – output geotif path</p></li>
+<li><p><strong>da</strong> – raster for resolution and bound to match</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>geotiff to file</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>rasterize_one(gdf, outpath, darock)</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.richardfunction">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">richardfunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#richardutils.richardutils.richardfunction" title="Permalink to this definition">#</a></dt>
 <dd><p>My function makes square roots.</p>
@@ -693,8 +743,10 @@ tif_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
 <li><a class="reference internal" href="#module-richardutils.richardutils">richardutils.richardutils module</a><ul>
 <li><a class="reference internal" href="#richardutils.richardutils.cetrainbow"><code class="docutils literal notranslate"><span class="pre">cetrainbow()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.clip_da"><code class="docutils literal notranslate"><span class="pre">clip_da()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.clip_dabox"><code class="docutils literal notranslate"><span class="pre">clip_dabox()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.df_bb"><code class="docutils literal notranslate"><span class="pre">df_bb()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.extract_band"><code class="docutils literal notranslate"><span class="pre">extract_band()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.gdb_dict"><code class="docutils literal notranslate"><span class="pre">gdb_dict()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.gdf_bb"><code class="docutils literal notranslate"><span class="pre">gdf_bb()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.global_low_res"><code class="docutils literal notranslate"><span class="pre">global_low_res()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.location_sample"><code class="docutils literal notranslate"><span class="pre">location_sample()</span></code></a></li>
@@ -708,6 +760,7 @@ tif_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmap_background"><code class="docutils literal notranslate"><span class="pre">plotmap_background()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmapc"><code class="docutils literal notranslate"><span class="pre">plotmapc()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmapw"><code class="docutils literal notranslate"><span class="pre">plotmapw()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.rasterize_one"><code class="docutils literal notranslate"><span class="pre">rasterize_one()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.richardfunction"><code class="docutils literal notranslate"><span class="pre">richardfunction()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.tif_dict"><code class="docutils literal notranslate"><span class="pre">tif_dict()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.world_low_res"><code class="docutils literal notranslate"><span class="pre">world_low_res()</span></code></a></li>
