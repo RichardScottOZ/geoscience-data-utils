@@ -915,7 +915,7 @@ def clip_da(dapath, gdfpath):
 
 def clip_dabox(dapath, bb):
     """
-    Clips a rioxarray by geodataframe polygons
+    Clips a rioxarray by bounding box
     
     Args:
         dapath: Path to raster
