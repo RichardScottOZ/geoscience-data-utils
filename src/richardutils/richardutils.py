@@ -707,7 +707,7 @@ def gdb_dict(gdbpath):
         gdbpath: path to a FileGDB
     """
     gdb_dict = {}
-    for l in fiona.listlayers(gdpath):
+    for l in fiona.listlayers(gdbpath):
         gdb_dict[l] = gpd.read_file(gdbpath, driver='FileGDB', layer=l)
     
     return gdb_dict
