@@ -26,6 +26,8 @@ import geocube
 from geocube.api.core import make_geocube
 from geocube.rasterize import rasterize_points_griddata, rasterize_points_radial, rasterize_image
 
+from shapely.geometry import box, mapping
+
 import xrspatial
 from xrspatial import proximity
 
@@ -710,6 +712,7 @@ def gdb_dict(gdbpath):
     for l in fiona.listlayers(gdbpath):
         gdb_dict[l] = gpd.read_file(gdbpath, driver='FileGDB', layer=l)
     
+    print(gdb_dict.keys())
     return gdb_dict
     
 
@@ -1002,4 +1005,4 @@ def rasterize_one(tilow, strpath, da):
     out_grid[column].rio.write_nodata(255, inplace=True)
     out_grid[column]=out_grid[column].astype('uint8')
 
-    out_grid[column].rio.to_raster(strpath)
+    out_grid[column].rio.to_raster(strpath, compress='PACKBITS')
