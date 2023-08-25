@@ -593,6 +593,7 @@ def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow'
     else:
         gdf.plot(alpha=alpha, cmap=cmap, legend=legend, ax=ax)
     plt.title(title)
+    plt.gca().collections[0].colorbar.remove()
     ax.axes.set_aspect('equal')
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')     
