@@ -566,6 +566,39 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
         if slide_dict is not None:        
             slide_dict[title] = title + '.png' 
 
+def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide_dict=None, size=7, legend=False):
+    """
+    Plot a gepdataframe with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        gdf: A gepdataframe
+        da: A dataarray in same crs
+        column: string column to plot
+        title: title of plot
+        alpha: transparently
+        savefig: write a png to the directory
+        cmap: a matplotlib colormap
+        slide_dict: dictionary to store reference to plots in
+
+
+    Examples:
+    
+    """
+    fig, ax = plt.subplots(figsize=(size,size))
+    da.plot(ax=ax)
+    if column is not None:
+        gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend, ax=ax)
+    else:
+        gdf.plot(alpha=alpha, cmap=cmap, legend=legend, ax=ax)
+    plt.title(title)
+    ax.axes.set_aspect('equal')
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')     
+        if slide_dict is not None:        
+            slide_dict[title] = title + '.png' 
+
 
 def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, vmax=None):
     """
