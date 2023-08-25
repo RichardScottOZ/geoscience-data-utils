@@ -383,6 +383,55 @@ def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cli
         
         
             slide_dict[title] = title + '.png'
+
+
+def plotmap3(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False):
+    """
+    Plot a dataarray with a title.
+    Allow saving to a png
+    Allow adding to a dictionary e.g. for presentation use
+
+    Args:
+        da: A DataArray
+        robust: clip to 2/98 or not
+        cmap: a matplotlib colormap
+        size: integer size of plot
+        title: string title of plot
+        clip: quantile number to clip to
+        savefig: save png to directory
+        slide_dict: add png path to a dictionary
+        background: plot a background shape layer
+
+    Returns:
+        The squarest root.
+
+    Examples:
+    
+    """
+
+    fig, ax = plt.subplots(figsize=(size,size))
+    if background is False:
+        pass
+    elif background is True:
+        daback = da / da
+        da.plot.imshow(cmap='Greys')
+    
+    else:
+        background.plot()
+        
+    if clip is not None:
+        quantile = np.nanpercentile(da, clip)
+        da.plot.imshow(cmap=cmap, robust=robust, ax=ax, vmax=quantile)
+    else:
+        da.plot.imshow(cmap=cmap, robust=robust, ax=ax)
+    plt.title(title)
+    ax.axes.set_aspect('equal')
+    if savefig:
+        plt.savefig(title + '.png',bbox_inches='tight')
+        if slide_dict is not None:
+        
+        
+            slide_dict[title] = title + '.png'
             
             
 def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, background=False, alpha=0.999):
