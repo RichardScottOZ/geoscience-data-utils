@@ -392,7 +392,7 @@ def plotmap3(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
     Allow adding to a dictionary e.g. for presentation use
 
     Args:
-        da: A DataArray
+        da: A DataArray with 3 bands
         robust: clip to 2/98 or not
         cmap: a matplotlib colormap
         size: integer size of plot
