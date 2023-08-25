@@ -566,7 +566,7 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
         if slide_dict is not None:        
             slide_dict[title] = title + '.png' 
 
-def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', cmap_da='cet_rainbow', slide_dict=None, size=7, legend=False):
+def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', cmap_da='cetrainbow',slide_dict=None, size=7, legend=False):
     """
     Plot a gepdataframe with a title.
     Allow saving to a png
@@ -574,12 +574,11 @@ def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow'
 
     Args:
         gdf: A gepdataframe
-        da: A dataarray in same crs
         column: string column to plot
         title: title of plot
         alpha: transparently
         savefig: write a png to the directory
-        cmap: a matplotlib colormap
+        cmap: a matplotlib colormap or a string with color_colorwanted e.g. plotgdf(da,cmap="color_white") to get a flat color gdf plto
         slide_dict: dictionary to store reference to plots in
 
 
@@ -589,18 +588,25 @@ def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow'
     fig, ax = plt.subplots(figsize=(size,size))
     da.plot(ax=ax, cmap=cmap_da)
     if column is not None:
-        gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend, ax=ax)
+        if "color_" in cmap:
+            gdf.plot(column=column,  alpha=alpha, color=cmap.split('_')[-1], legend=legend, ax=ax)
+        else:
+            gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend, ax=ax)
     else:
-        gdf.plot(alpha=alpha, cmap=cmap, legend=legend, ax=ax)
+        if "color_" in cmap:
+            gdf.plot(alpha=alpha, color=cmap.split('_')[-1], legend=legend, ax=ax)
+        else:
+            gdf.plot(column=column,  alpha=alpha, cmap=cmap, legend=legend, ax=ax)
     plt.title(title)
     plt.gca().collections[0].colorbar.remove()
     ax.axis('tight')
+    #ax.axis('off')
     ax.axes.set_aspect('equal')
+    
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')     
         if slide_dict is not None:        
             slide_dict[title] = title + '.png' 
-
 
 def plotmapw(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', clip=None, savefig=True, slide_dict=None, vmax=None):
     """
