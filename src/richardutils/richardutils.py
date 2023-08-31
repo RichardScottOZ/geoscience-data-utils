@@ -806,6 +806,24 @@ def gdb_dict(gdbpath):
     return gdb_dict
     
 
+def shape_dict(shapepath):
+    """
+    Returns a dictionary of geodataframes
+    
+    Args: 
+        shapepath: path to a directory with shapefiles
+    """
+    shape_dict = {}
+    for root, dirs, files in os.walk(shapepath):
+        for file in files:
+            if '.shp' in file:
+                #print("reading: ", file
+                newfile = file.replace('.shp','')
+                shape_dict[newfile] = gpd.read_file(os.path.join(root,file))
+    
+    print(shape_dict.keys())
+    return shape_dict
+
 
 def zonal_stats(vector_data, measurements, dalike, variable):
     """
