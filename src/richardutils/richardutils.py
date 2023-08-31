@@ -816,7 +816,7 @@ def shape_dict(shapepath):
     shape_dict = {}
     for root, dirs, files in os.walk(shapepath):
         for file in files:
-            if '.shp' in file:
+            if '.shp' in file and 'xml' not in file:
                 #print("reading: ", file
                 newfile = file.replace('.shp','')
                 shape_dict[newfile] = gpd.read_file(os.path.join(root,file))
