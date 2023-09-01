@@ -615,7 +615,7 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
         if slide_dict is not None:        
             slide_dict[title] = title + '.png' 
 
-def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', cmap_da='cetrainbow',slide_dict=None, size=7, legend=False):
+def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', cmap_da='cetrainbow',slide_dict=None, size=7, legend=False, robust=False):
     """
     Plot a gepdataframe with a title.
     Allow saving to a png
@@ -635,7 +635,7 @@ def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow'
     
     """
     fig, ax = plt.subplots(figsize=(size,size))
-    da.plot(ax=ax, cmap=cmap_da)
+    da.plot(ax=ax, cmap=cmap_da, robust=robust)
     if column is not None:
         if "color_" in cmap:
             gdf.plot(column=column,  alpha=alpha, color=cmap.split('_')[-1], legend=legend, ax=ax)
