@@ -54,6 +54,12 @@ def richardfunction(n: float) -> float:
 def cetrainbow():
     """
     Make a CET perceptually uniform rainbow colormap
+    newcmp = cetrainbow()
+    cm.register_cmap(name='cetrainbow', cmap=newcmp)
+
+    To reverse: cet_r = ListedColormap(newcmp.colors[::-1])
+                cm.register_cmap(name='cetrainbow_r', cmap=cet_r)
+
     """
 
     CET = """0 0 48 245
@@ -617,7 +623,7 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
 
 def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', cmap_da='cetrainbow',slide_dict=None, size=7, legend=False, robust=False):
     """
-    Plot a gepdataframe with a title.
+    Plot a geopdataframe with a title.
     Allow saving to a png
     Allow adding to a dictionary e.g. for presentation use
 
@@ -1041,7 +1047,7 @@ def clip_dabox(dapath, bb):
     """
 
     da = rioxarray.open_rasterio(dapath)
-    clipped = da.rio.clip_box(xmin = bb[0], ymin=bb[1],xmax=bb[2],ymax=bb[3])
+    clipped = da.rio.clip_box(minx = bb[0], miny=bb[1],maxx=bb[2],maxy=bb[3])
     
     return clipped
     
