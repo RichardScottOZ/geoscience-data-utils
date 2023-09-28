@@ -835,7 +835,7 @@ def shape_dict(shapepath):
 
 def zonal_stats(vector_data, measurements, dalike, variable):
     """
-    Get a dataframe of zonal statistics from a DataArra
+    Get a dataframe of zonal statistics from a DataArray
 
     Args:
         vector_data: a dataframe with a unique id
