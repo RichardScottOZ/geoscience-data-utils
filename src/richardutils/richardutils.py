@@ -31,6 +31,8 @@ from shapely.geometry import box, mapping
 import xrspatial
 from xrspatial import proximity
 
+import rasterio
+
 
 def richardfunction(n: float) -> float:
     """
@@ -1006,8 +1008,29 @@ def tif_dict(strpath, masked=True, chunks=None, dsmatch=None):
     return check_dict
      
 
+def clip_da(da, gdfpath):
+    """
+    Clips a rioxarray by geodataframe polygons
+    
+    Args:
+        dapath: Path to raster
+        gdfpath: Path to vector polygon dataset
+    
+    Returns:
+        Clipped rioxarray
+        
+    Examples: 
+        schaus = clip_da('dapath', 'gdfpath')
+    
+    """
 
-def clip_da(dapath, gdfpath):
+    gdf = gpd.read_file(gdfpath)
+    clipped = da.rio.clip(gdf.geometry.values, gdf.crs, drop=True, invert=False)
+    
+    return clipped
+
+
+def clip_raster(dapath, gdfpath):
     """
     Clips a rioxarray by geodataframe polygons
     
@@ -1120,3 +1143,4 @@ def rasterize_one(tilow, strpath, da):
     out_grid[column]=out_grid[column].astype('uint8')
 
     out_grid[column].rio.to_raster(strpath, compress='PACKBITS')
+    
