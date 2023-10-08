@@ -854,6 +854,8 @@ def zonal_stats(vector_data, measurements, dalike, variable):
         vector_data=vector_data,
         measurements=[measurements],
         like=dalike, # ensure the data are on the same grid
+        rasterize_function=partial(rasterize_image, all_touched=True)
+        
     )
     out_grid[variable] = (dalike.dims, dalike.values, dalike.attrs, dalike.encoding)
     
@@ -1006,6 +1008,42 @@ def tif_dict(strpath, masked=True, chunks=None, dsmatch=None):
                         check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks).rio.reproject_match(dsmatch)    
                 
     return check_dict
+    
+def ers_dict(strpath, masked=True, chunks=None, dsmatch=None):
+    """
+    Walks a directory of ers grids and returns a dictionary of rioxarray DataArrays
+    Args:
+        strpath: directory name
+        chunks: tuple of integers
+        dsmatch: data array to match the directory of raster to
+        masked: whether to mask by nodata, default is yes, pass masked=False if not desired
+    Returns:
+        a dictionary of rioxarrays
+        
+    Examples: 
+       ers_dict(r'D:\BananaSplits')
+       ers_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
+    
+    """
+
+    check_dict = {}
+    for root, dirs, files in os.walk(strpath):
+        for file in files:
+            print(file)
+            if '.ers' in file and '.gi' not in file and '.xml' not in file:
+                if dsmatch is None:
+                    if chunks is None:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file),masked=masked)    
+                    else:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks)    
+                else:
+                    if chunks is None:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked).rio.reproject_match(dsmatch)    
+                    else:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks).rio.reproject_match(dsmatch)    
+                
+    return check_dict
+    
      
 
 def clip_da(da, gdfpath):
