@@ -1029,7 +1029,7 @@ def ers_dict(strpath, masked=True, chunks=None, dsmatch=None):
     check_dict = {}
     for root, dirs, files in os.walk(strpath):
         for file in files:
-            print(file)
+            
             if '.ers' in file and '.gi' not in file and '.xml' not in file:
                 if dsmatch is None:
                     if chunks is None:
