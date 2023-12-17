@@ -635,7 +635,7 @@ def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow'
         title: title of plot
         alpha: transparently
         savefig: write a png to the directory
-        cmap: a matplotlib colormap or a string with color_colorwanted e.g. plotgdf(da,cmap="color_white") to get a flat color gdf plto
+        cmap: a matplotlib colormap or a string with color_colorwanted e.g. plotgdf(da,cmap="color_white") to get a flat color gdf plot
         slide_dict: dictionary to store reference to plots in
 
 
