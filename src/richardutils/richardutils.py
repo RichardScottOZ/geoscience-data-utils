@@ -956,7 +956,7 @@ def location_sample(gdf, da, name_col):
     
     Args:
         gdf: geodataframe of points
-        da: DataArrau to sample:
+        da: DataArray to sample:
         name_col: String to identify the location names
         
     Returns:
