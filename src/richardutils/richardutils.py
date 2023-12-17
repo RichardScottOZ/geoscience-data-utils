@@ -571,7 +571,7 @@ def plothist(da, title, color='Orange', savefig=True, slide_dict = None):
         
 def plothist_combo(da, da2, title, color1='Orange',color2='Gold', savefig=True, slide_dict = None):
     """
-    Plot a gepdataframe with a title.
+    Plot a geodataframe with a title.
     Allow saving to a png
     Allow adding to a dictionary e.g. for presentation use
 
