@@ -33,6 +33,8 @@ from xrspatial import proximity
 
 import rasterio
 
+import pyvista as pv
+
 
 def richardfunction(n: float) -> float:
     """
@@ -973,6 +975,27 @@ def location_sample(gdf, da, name_col):
     dfda = dapt.to_dataframe().reset_index()  
    
     return dfda
+
+
+def gdf_shape_dict(strpath):    
+    """
+    Walks a directory of shapefiles
+    Args:
+        strpath: directory name
+    Returns:
+        a dictionary of geodataframes
+        
+    Examples: 
+       gdf_shape_dict(r'D:\BananaSplits')
+    
+    """
+    check_dict = {}
+    for root, dirs, files in os.walk(strpath):
+        for file in files:
+            if '.shp' in file:
+                check_dict[file] = gpd.read_file(os.path.join(root,file))
+                
+    return check_dict
 
 
 def gdf_parquet_dict(strpath):    
