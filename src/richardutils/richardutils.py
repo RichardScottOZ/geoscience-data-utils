@@ -994,7 +994,27 @@ def gdf_parquet_dict(strpath):
                 check_dict[file] = gpd.read_parquet(os.path.join(root,file))
                 
     return check_dict
+
                 
+def gdf_parquet_list(strpath):    
+    """
+    Walks a directory of parquet geodataframes
+    Args:
+        strpath: directory name
+    Returns:
+        a list of geodataframes
+        
+    Examples: 
+       gdf_parquet_list(r'D:\BananaSplits')
+    
+    """
+    check_list = []
+    for root, dirs, files in os.walk(strpath):
+        for file in files:
+            if '.parquet' in file:
+                check_list.append(gpd.read_parquet(os.path.join(root,file))
+                
+    return check_list
             
 
     
@@ -1031,6 +1051,7 @@ def tif_dict(strpath, masked=True, chunks=None, dsmatch=None):
                         check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks).rio.reproject_match(dsmatch)    
                 
     return check_dict
+
     
 def ers_dict(strpath, masked=True, chunks=None, dsmatch=None):
     """
