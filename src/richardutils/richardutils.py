@@ -991,7 +991,7 @@ def gdf_parquet_dict(strpath):
     for root, dirs, files in os.walk(strpath):
         for file in files:
             if '.parquet' in file:
-                check_dict[file] = gpd.read_parquet(os.path.join,root,file))
+                check_dict[file] = gpd.read_parquet(os.path.join(root,file))
                 
     return check_dict
                 
