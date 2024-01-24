@@ -993,7 +993,7 @@ def gdf_parquet_dict(strpath):
             if '.parquet' in file:
                 check_dict[file] = gpd.read_parquet(os.path.join,root,file))
                 
-     return check_dict
+    return check_dict
                 
             
 
