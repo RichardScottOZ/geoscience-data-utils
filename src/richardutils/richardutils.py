@@ -974,6 +974,29 @@ def location_sample(gdf, da, name_col):
    
     return dfda
 
+
+def gdf_parquet_dict(strpath):    
+    """
+    Walks a directory of parquet geodataframes
+    Args:
+        strpath: directory name
+    Returns:
+        a dictionary of geodataframes
+        
+    Examples: 
+       gdf_parquet_dict(r'D:\BananaSplits')
+    
+    """
+    check_dict = {}
+    for root, dirs, files in os.walk(strpath):
+        for file in files:
+            if '.parquet' in file:
+                check_dict[file] = gpd.read_parquet(os.path.join,root,file))
+                
+     return check_dict
+                
+            
+
     
 def tif_dict(strpath, masked=True, chunks=None, dsmatch=None):
     """
