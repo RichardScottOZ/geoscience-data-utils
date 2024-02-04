@@ -1035,7 +1035,7 @@ def gdf_parquet_list(strpath):
     for root, dirs, files in os.walk(strpath):
         for file in files:
             if '.parquet' in file:
-                check_list.append(gpd.read_parquet(os.path.join(root,file))
+                check_list.append(gpd.read_parquet(os.path.join(root,file)) )
                 
     return check_list
             
