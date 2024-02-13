@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
+from osgeo import gdal
 import geopandas as gpd
 import fiona
 
@@ -1111,9 +1112,6 @@ def ers_dict(strpath, masked=True, chunks=None, dsmatch=None):
                 
     return check_dict
     
-import os
-from osgeo import gdal
-
 
 def create_vrt_for_geotiffs(directory):
     # List all files in the directory
