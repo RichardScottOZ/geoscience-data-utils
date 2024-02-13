@@ -1114,6 +1114,11 @@ def ers_dict(strpath, masked=True, chunks=None, dsmatch=None):
     
 
 def create_vrt_for_geotiffs(directory):
+    """
+    Args:
+        directory: Path to raster tifs
+    """
+
     # List all files in the directory
     files = os.listdir(directory)
     
