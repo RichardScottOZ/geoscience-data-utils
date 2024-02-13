@@ -1111,6 +1111,25 @@ def ers_dict(strpath, masked=True, chunks=None, dsmatch=None):
                 
     return check_dict
     
+import os
+from osgeo import gdal
+
+
+def create_vrt_for_geotiffs(directory):
+    # List all files in the directory
+    files = os.listdir(directory)
+    
+    # Filter only GeoTIFF files
+    geotiff_files = [file for file in files if file.endswith('.tif') or file.endswith('.tiff')]
+    
+    # Iterate over GeoTIFF files and create VRT for each
+    for geotiff_file in geotiff_files:
+        geotiff_path = os.path.join(directory, geotiff_file)
+        vrt_path = os.path.splitext(geotiff_path)[0] + '.vrt'
+        
+        # Create a VRT using GDAL
+        gdal.BuildVRT(vrt_path, geotiff_path)
+        print(f"Created VRT for {geotiff_file} at {vrt_path}")
      
 
 def clip_da(da, gdfpath):
