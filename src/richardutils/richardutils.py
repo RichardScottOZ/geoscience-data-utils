@@ -1175,6 +1175,46 @@ def tif_to_ers(strpath, masked=True, chunks=None, dsmatch=None):
                 
     return check_dict
         
+
+def tif_to_img(strpath, masked=True, chunks=None, dsmatch=None):
+    """
+    Walks a directory of geotiffs and returns each as an img rasterl
+    Args:
+        strpath: directory name
+        chunks: tuple of integers
+        dsmatch: data array to match the directory of raster to
+        masked: whether to mask by nodata, default is yes, pass masked=False if not desired
+    Returns:
+        a dictionary of rioxarrays
+        
+    Examples: 
+       tif_dict(r'D:\BananaSplits')
+       tif_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
+    
+    """
+
+    check_dict = {}
+    for root, dirs, files in os.walk(strpath):
+        for file in files:
+            if '.tif' in file and '.xml' not in file:
+                if dsmatch is None:
+                    if chunks is None:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file),masked=masked)    
+                    else:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks)    
+                else:
+                    if chunks is None:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked).rio.reproject_match(dsmatch)    
+                    else:
+                        check_dict[file] = rioxarray.open_rasterio(os.path.join(root,file), masked=masked, chunks=chunks).rio.reproject_match(dsmatch)    
+                        
+    for file in check_dict:
+        ersfile = file.replace('.tif','.img')
+        print(file.replace('.tif','.img'))
+        check_dict[file].rio.to_raster(ersfile, driver='HFA', COMPRESSED='YES')
+        
+                
+    return check_dict
      
 
 def clip_da(da, gdfpath):
