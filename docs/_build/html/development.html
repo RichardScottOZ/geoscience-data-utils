@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="installation.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Contributing" href="contributing.html" /><link rel="prev" title="richardutils package" href="richardutils.html" />
 
     <link rel="shortcut icon" href="_static/favicon.ico"/><!-- Generated with Sphinx 5.3.0 and Furo 2023.05.20 -->
-        <title>richardutils documentation</title>
+        <title>Development - richardutils documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">richardutils  documentation</div></a>
+      <a href="index.html"><div class="brand">richardutils  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -145,7 +145,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   
@@ -165,8 +165,8 @@
 <li class="toctree-l1"><a class="reference internal" href="richardutils.html">richardutils package</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other resources</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -206,78 +206,64 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <div class="docutils container" id="forkongithub">
-<p><a class="reference external" href="https://github.com/scienxlab/python-package-template">Fork on GitHub</a></p>
-</div>
-<section id="richardutils">
-<h1>richardutils<a class="headerlink" href="#richardutils" title="Permalink to this heading">#</a></h1>
-<blockquote>
-<div><div class="line-block">
-<div class="line">A sample Python package to use as a template for others.</div>
-</div>
-</div></blockquote>
-<section id="quick-start">
-<h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-</div>
-<p>Create a new package using <cite>python-package-template</cite> as a template.</p>
-<p>Clone your version of the new package using <cite>git</cite>.</p>
-<p>Do a global search and replace of <cite>richardutils</cite> for your package name.
-Also look for <cite>richardcli</cite> and <cite>richardfunction</cite>.</p>
-</section>
-<section id="user-guide">
-<h2>User guide<a class="headerlink" href="#user-guide" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/Basic_usage.html">Basic usage</a></li>
-</ul>
+          <section class="tex2jax_ignore mathjax_ignore" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this heading">#</a></h1>
+<p>If you’d like to develop <code class="docutils literal notranslate"><span class="pre">richardutils</span></code>, this page should help you get started.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>You can install this package with <code class="docutils literal notranslate"><span class="pre">pip</span></code>. The <code class="docutils literal notranslate"><span class="pre">dev</span></code> option will install the packages you need for testing and building the documentation.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install richardutils[dev]
+</pre></div>
 </div>
 </section>
-<section id="api-reference">
-<h2>API reference<a class="headerlink" href="#api-reference" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">API reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="richardutils.html">richardutils package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="richardutils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="richardutils.html#module-richardutils.cli">richardutils.cli module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="richardutils.html#module-richardutils.richardutils">richardutils.richardutils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="richardutils.html#module-richardutils">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">#</a></h2>
+<p>If you’d like to contribute pull requests back to the main <code class="docutils literal notranslate"><span class="pre">richardutils</span> </code> project, please see <a class="reference external" href="https://github.com/scienxlab/richardutils/blob/main/CONTRIBUTING.md"><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code></a>.</p>
 </section>
-<section id="other-resources">
-<h2>Other resources<a class="headerlink" href="#other-resources" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Other resources</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
-</ul>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
+<p>You can run the tests (requires <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>) with</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python run_tests.py
+</pre></div>
 </div>
+<p>Most of the tests are <code class="docutils literal notranslate"><span class="pre">doctest</span></code> tests, which are contained in the docstrings of this package’s functions. It is also possible to add test files to the <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder in the normal way.</p>
 </section>
-<section id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h2>
+<section id="building-the-package">
+<h2>Building the package<a class="headerlink" href="#building-the-package" title="Permalink to this heading">#</a></h2>
+<p>This repo uses PEP 518-style packaging. <a class="reference external" href="https://setuptools.pypa.io/en/latest/build_meta.html">Read more about this</a> and <a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">about Python packaging in general</a>.</p>
+<p>Building the project requires <code class="docutils literal notranslate"><span class="pre">build</span></code>, so first:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m pip install build
+</pre></div>
+</div>
+<p>Then to build <code class="docutils literal notranslate"><span class="pre">richardutils</span></code> locally:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m build
+</pre></div>
+</div>
+<p>This builds both <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> and <code class="docutils literal notranslate"><span class="pre">.whl</span></code> files, either of which you can install with <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+</section>
+<section id="building-the-docs">
+<h2>Building the docs<a class="headerlink" href="#building-the-docs" title="Permalink to this heading">#</a></h2>
+<p>You can build the docs with the following commands:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd docs
+make html
+</pre></div>
+</div>
+<p>Don’t just run <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> manually: there is other stuff happening in the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
+<p>There is a continuous integration script to update the docs on published releases.</p>
+</section>
+<section id="continuous-integration">
+<h2>Continuous integration<a class="headerlink" href="#continuous-integration" title="Permalink to this heading">#</a></h2>
+<p>This repo has two GitHub ‘workflows’ or ‘actions’:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p>Push to <code class="docutils literal notranslate"><span class="pre">main</span></code>: Run all tests on all version of Python. This is the <strong>Build and test</strong> workflow.</p></li>
+<li><p>Publish a new release: Build and upload to PyPI. This is the <strong>Publish to PyPI</strong> workflow. Publish using the GitHub interface, for example (<a class="reference external" href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">read more</a>).</p></li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 </section>
 
@@ -286,16 +272,26 @@ Also look for <cite>richardcli</cite> and <cite>richardfunction</cite>.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="installation.html">
+          <a class="next-page" href="contributing.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Installation</div>
+                <div class="title">Contributing</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="richardutils.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">richardutils package</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -314,8 +310,32 @@ Also look for <cite>richardcli</cite> and <cite>richardfunction</cite>.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Development</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#contributing">Contributing</a></li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#building-the-package">Building the package</a></li>
+<li><a class="reference internal" href="#building-the-docs">Building the docs</a></li>
+<li><a class="reference internal" href="#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
