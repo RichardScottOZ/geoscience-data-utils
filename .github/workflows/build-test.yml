@@ -16,10 +16,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install xmllint
-    - run: sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
-    - run: sudo apt-get update
-    - run: sudo apt-get install gdal-bin libgdal-dev
-    - run: pip install GDAL==`gdal-config --version` 
+      run: | 
+        sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
+        sudo apt-get update
+        sudo apt-get install gdal-bin libgdal-dev
+        pip install GDAL==`gdal-config --version` 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
