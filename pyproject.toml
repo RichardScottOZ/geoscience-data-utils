@@ -28,7 +28,8 @@ dependencies = [
     "rioxarray",
     "geocube",
     "matplotlib",
-    "xarray-spatial"
+    "xarray-spatial",
+	"osgeo"
 ]
 
 [project.optional-dependencies]
