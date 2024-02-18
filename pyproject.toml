@@ -29,7 +29,7 @@ dependencies = [
     "geocube",
     "matplotlib",
     "xarray-spatial",
-	"osgeo"
+	"gdal"
 ]
 
 [project.optional-dependencies]
