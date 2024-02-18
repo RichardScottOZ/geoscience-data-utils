@@ -225,12 +225,56 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.cetrainbow">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">cetrainbow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.cetrainbow" title="Permalink to this definition">#</a></dt>
-<dd><p>Make a CET perceptually uniform rainbow colormap</p>
+<dd><p>Make a CET perceptually uniform rainbow colormap
+newcmp = cetrainbow()
+cm.register_cmap(name=’cetrainbow’, cmap=newcmp)</p>
+<dl class="simple">
+<dt>To reverse: cet_r = ListedColormap(newcmp.colors[::-1])</dt><dd><p>cm.register_cmap(name=’cetrainbow_r’, cmap=cet_r)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.clip_da">
-<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">clip_da</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dapath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdfpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.clip_da" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">clip_da</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdfpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.clip_da" title="Permalink to this definition">#</a></dt>
+<dd><p>Clips a rioxarray by geodataframe polygons</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>da</strong> – rioxarray Data Array</p></li>
+<li><p><strong>gdfpath</strong> – Path to vector polygon dataset</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Clipped rioxarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>schaus = clip_da(‘dapath’, ‘gdfpath’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.clip_dabox">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">clip_dabox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dapath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.clip_dabox" title="Permalink to this definition">#</a></dt>
+<dd><p>Clips a rioxarray by bounding box</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dapath</strong> – Path to raster</p></li>
+<li><p><strong>bb</strong> – boundingbox coordinates iterable xmin, ymin, xmax, ymax</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Clipped rioxarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>schaus = clip_dabox(‘dapath’, bb)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.clip_raster">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">clip_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dapath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdfpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.clip_raster" title="Permalink to this definition">#</a></dt>
 <dd><p>Clips a rioxarray by geodataframe polygons</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -248,22 +292,13 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="richardutils.richardutils.clip_dabox">
-<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">clip_dabox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dapath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.clip_dabox" title="Permalink to this definition">#</a></dt>
-<dd><p>Clips a rioxarray by geodataframe polygons</p>
-<dl class="field-list simple">
+<dt class="sig sig-object py" id="richardutils.richardutils.create_vrt_for_geotiffs">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">create_vrt_for_geotiffs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.create_vrt_for_geotiffs" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dapath</strong> – Path to raster</p></li>
-<li><p><strong>bb</strong> – boundingbox coordinates xmin, ymin, xmax, ymax</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Clipped rioxarray</p>
+<dd class="field-odd"><p><strong>directory</strong> – Path to raster tifs</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<p>schaus = clip_dabox(‘dapath’, bb)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -285,6 +320,24 @@
 </dl>
 <p class="rubric">Examples</p>
 <p>dfbb = df_bb(df,bb, ‘longitude’,’latitude’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.ers_dict">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">ers_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsmatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.ers_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Walks a directory of ers grids and returns a dictionary of rioxarray DataArrays
+:param strpath: directory name
+:param chunks: tuple of integers
+:param dsmatch: data array to match the directory of raster to
+:param masked: whether to mask by nodata, default is yes, pass masked=False if not desired</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary of rioxarrays</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>ers_dict(r’D:BananaSplits’)
+ers_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
 </dd></dl>
 
 <dl class="py function">
@@ -329,6 +382,48 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.gdf_parquet_dict">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">gdf_parquet_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.gdf_parquet_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Walks a directory of parquet geodataframes
+:param strpath: directory name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary of geodataframes</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>gdf_parquet_dict(r’D:BananaSplits’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.gdf_parquet_list">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">gdf_parquet_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.gdf_parquet_list" title="Permalink to this definition">#</a></dt>
+<dd><p>Walks a directory of parquet geodataframes
+:param strpath: directory name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a list of geodataframes</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>gdf_parquet_list(r’D:BananaSplits’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.gdf_shape_dict">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">gdf_shape_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.gdf_shape_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Walks a directory of shapefiles
+:param strpath: directory name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary of geodataframes</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>gdf_shape_dict(r’D:BananaSplits’)</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.global_low_res">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">global_low_res</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.global_low_res" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
@@ -346,7 +441,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>gdf</strong> – geodataframe of points</p></li>
-<li><p><strong>da</strong> – DataArrau to sample:</p></li>
+<li><p><strong>da</strong> – DataArray to sample:</p></li>
 <li><p><strong>name_col</strong> – String to identify the location names</p></li>
 </ul>
 </dd>
@@ -434,6 +529,28 @@ Allow adding to a dictionary e.g. for presentation use</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.plotgdf_da">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">plotgdf_da</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cetrainbow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap_da</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cetrainbow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slide_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.plotgdf_da" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a geopdataframe with a title.
+Allow saving to a png
+Allow adding to a dictionary e.g. for presentation use</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gdf</strong> – A gepdataframe</p></li>
+<li><p><strong>column</strong> – string column to plot</p></li>
+<li><p><strong>title</strong> – title of plot</p></li>
+<li><p><strong>alpha</strong> – transparently</p></li>
+<li><p><strong>savefig</strong> – write a png to the directory</p></li>
+<li><p><strong>cmap</strong> – a matplotlib colormap or a string with color_colorwanted e.g. plotgdf(da,cmap=”color_white”) to get a flat color gdf plot</p></li>
+<li><p><strong>slide_dict</strong> – dictionary to store reference to plots in</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.plothist">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">plothist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Orange'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slide_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.plothist" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -441,7 +558,7 @@ Allow adding to a dictionary e.g. for presentation use</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.plothist_combo">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">plothist_combo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Orange'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Gold'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slide_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.plothist_combo" title="Permalink to this definition">#</a></dt>
-<dd><p>Plot a gepdataframe with a title.
+<dd><p>Plot a geodataframe with a title.
 Allow saving to a png
 Allow adding to a dictionary e.g. for presentation use</p>
 <dl class="field-list simple">
@@ -470,6 +587,33 @@ Allow adding to a dictionary e.g. for presentation use</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>da</strong> – A DataArray</p></li>
+<li><p><strong>robust</strong> – clip to 2/98 or not</p></li>
+<li><p><strong>cmap</strong> – a matplotlib colormap</p></li>
+<li><p><strong>size</strong> – integer size of plot</p></li>
+<li><p><strong>title</strong> – string title of plot</p></li>
+<li><p><strong>clip</strong> – quantile number to clip to</p></li>
+<li><p><strong>savefig</strong> – save png to directory</p></li>
+<li><p><strong>slide_dict</strong> – add png path to a dictionary</p></li>
+<li><p><strong>background</strong> – plot a background shape layer</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The squarest root.</p>
+</dd>
+</dl>
+<p>Examples:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.plotmap3">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">plotmap3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cetrainbow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Title</span> <span class="pre">Here'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slide_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.plotmap3" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a dataarray with a title.
+Allow saving to a png
+Allow adding to a dictionary e.g. for presentation use</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>da</strong> – A DataArray with 3 bands</p></li>
 <li><p><strong>robust</strong> – clip to 2/98 or not</p></li>
 <li><p><strong>cmap</strong> – a matplotlib colormap</p></li>
 <li><p><strong>size</strong> – integer size of plot</p></li>
@@ -557,13 +701,13 @@ Allow adding to a dictionary e.g. for presentation use</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.rasterize_one">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">rasterize_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tilow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.rasterize_one" title="Permalink to this definition">#</a></dt>
-<dd><p>Rasterize a geodataframe to a default one slow</p>
+<dd><p>Rasterize a geodataframe to a default one raster</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tilow</strong> – gdf</p></li>
 <li><p><strong>strpath</strong> – output geotif path</p></li>
-<li><p><strong>da</strong> – raster for resolution and bound to match</p></li>
+<li><p><strong>da</strong> – raster for resolution and bounds to match</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -577,7 +721,8 @@ Allow adding to a dictionary e.g. for presentation use</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.richardfunction">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">richardfunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#richardutils.richardutils.richardfunction" title="Permalink to this definition">#</a></dt>
-<dd><p>My function makes square roots.</p>
+<dd><p>This is not currently used so pointless to look at currently
+My function makes square roots.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n</strong> – A number of some kind.</p>
@@ -594,12 +739,59 @@ Allow adding to a dictionary e.g. for presentation use</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.shape_dict">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">shape_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shapepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.shape_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a dictionary of geodataframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>shapepath</strong> – path to a directory with shapefiles</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.tif_dict">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">tif_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsmatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.tif_dict" title="Permalink to this definition">#</a></dt>
 <dd><p>Walks a directory of geotiffs and returns a dictionary of rioxarray DataArrays
 :param strpath: directory name
 :param chunks: tuple of integers
 :param dsmatch: data array to match the directory of raster to
+:param masked: whether to mask by nodata, default is yes, pass masked=False if not desired</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary of rioxarrays</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>tif_dict(r’D:BananaSplits’)
+tif_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.tif_to_ers">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">tif_to_ers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsmatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.tif_to_ers" title="Permalink to this definition">#</a></dt>
+<dd><p>Walks a directory of geotiffs and returns each as an ers grid and writes to fiel
+:param strpath: directory name
+:param chunks: tuple of integers
+:param dsmatch: data array to match the directory of rasters to
+:param masked: whether to mask by nodata, default is yes, pass masked=False if not desired</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary of rioxarrays</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>tif_dict(r’D:BananaSplits’)
+tif_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="richardutils.richardutils.tif_to_img">
+<span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">tif_to_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsmatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.tif_to_img" title="Permalink to this definition">#</a></dt>
+<dd><p>Walks a directory of geotiffs and returns each as an img rasterl
+:param strpath: directory name
+:param chunks: tuple of integers
+:param dsmatch: data array to reproject match the directory of rasters to
 :param masked: whether to mask by nodata, default is yes, pass masked=False if not desired</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -658,7 +850,7 @@ tif_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="richardutils.richardutils.zonal_stats">
 <span class="sig-prename descclassname"><span class="pre">richardutils.richardutils.</span></span><span class="sig-name descname"><span class="pre">zonal_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measurements</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dalike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#richardutils.richardutils.zonal_stats" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a dataframe of zonal statistics from a DataArra</p>
+<dd><p>Get a dataframe of zonal statistics from a DataArray</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -744,25 +936,36 @@ tif_dict(r’D:BananaSplits’, chunk=s(1,1024,1024))</p>
 <li><a class="reference internal" href="#richardutils.richardutils.cetrainbow"><code class="docutils literal notranslate"><span class="pre">cetrainbow()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.clip_da"><code class="docutils literal notranslate"><span class="pre">clip_da()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.clip_dabox"><code class="docutils literal notranslate"><span class="pre">clip_dabox()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.clip_raster"><code class="docutils literal notranslate"><span class="pre">clip_raster()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.create_vrt_for_geotiffs"><code class="docutils literal notranslate"><span class="pre">create_vrt_for_geotiffs()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.df_bb"><code class="docutils literal notranslate"><span class="pre">df_bb()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.ers_dict"><code class="docutils literal notranslate"><span class="pre">ers_dict()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.extract_band"><code class="docutils literal notranslate"><span class="pre">extract_band()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.gdb_dict"><code class="docutils literal notranslate"><span class="pre">gdb_dict()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.gdf_bb"><code class="docutils literal notranslate"><span class="pre">gdf_bb()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.gdf_parquet_dict"><code class="docutils literal notranslate"><span class="pre">gdf_parquet_dict()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.gdf_parquet_list"><code class="docutils literal notranslate"><span class="pre">gdf_parquet_list()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.gdf_shape_dict"><code class="docutils literal notranslate"><span class="pre">gdf_shape_dict()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.global_low_res"><code class="docutils literal notranslate"><span class="pre">global_low_res()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.location_sample"><code class="docutils literal notranslate"><span class="pre">location_sample()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.makegdf"><code class="docutils literal notranslate"><span class="pre">makegdf()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.mmnorm"><code class="docutils literal notranslate"><span class="pre">mmnorm()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.norm_diff_comparison"><code class="docutils literal notranslate"><span class="pre">norm_diff_comparison()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotgdf"><code class="docutils literal notranslate"><span class="pre">plotgdf()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.plotgdf_da"><code class="docutils literal notranslate"><span class="pre">plotgdf_da()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plothist"><code class="docutils literal notranslate"><span class="pre">plothist()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plothist_combo"><code class="docutils literal notranslate"><span class="pre">plothist_combo()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmap"><code class="docutils literal notranslate"><span class="pre">plotmap()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.plotmap3"><code class="docutils literal notranslate"><span class="pre">plotmap3()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmap_background"><code class="docutils literal notranslate"><span class="pre">plotmap_background()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmapc"><code class="docutils literal notranslate"><span class="pre">plotmapc()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.plotmapw"><code class="docutils literal notranslate"><span class="pre">plotmapw()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.rasterize_one"><code class="docutils literal notranslate"><span class="pre">rasterize_one()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.richardfunction"><code class="docutils literal notranslate"><span class="pre">richardfunction()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.shape_dict"><code class="docutils literal notranslate"><span class="pre">shape_dict()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.tif_dict"><code class="docutils literal notranslate"><span class="pre">tif_dict()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.tif_to_ers"><code class="docutils literal notranslate"><span class="pre">tif_to_ers()</span></code></a></li>
+<li><a class="reference internal" href="#richardutils.richardutils.tif_to_img"><code class="docutils literal notranslate"><span class="pre">tif_to_img()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.world_low_res"><code class="docutils literal notranslate"><span class="pre">world_low_res()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.zonal_onshore"><code class="docutils literal notranslate"><span class="pre">zonal_onshore()</span></code></a></li>
 <li><a class="reference internal" href="#richardutils.richardutils.zonal_onshore_globe"><code class="docutils literal notranslate"><span class="pre">zonal_onshore_globe()</span></code></a></li>
