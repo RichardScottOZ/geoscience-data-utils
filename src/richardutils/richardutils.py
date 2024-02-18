@@ -1135,7 +1135,7 @@ def tif_to_ers(strpath, masked=True, chunks=None, dsmatch=None):
     Args:
         strpath: directory name
         chunks: tuple of integers
-        dsmatch: data array to match the directory of raster to
+        dsmatch: data array to match the directory of rasters to
         masked: whether to mask by nodata, default is yes, pass masked=False if not desired
     Returns:
         a dictionary of rioxarrays
@@ -1176,7 +1176,7 @@ def tif_to_img(strpath, masked=True, chunks=None, dsmatch=None):
     Args:
         strpath: directory name
         chunks: tuple of integers
-        dsmatch: data array to match the directory of raster to
+        dsmatch: data array to reproject match the directory of rasters to
         masked: whether to mask by nodata, default is yes, pass masked=False if not desired
     Returns:
         a dictionary of rioxarrays
@@ -1216,7 +1216,7 @@ def clip_da(da, gdfpath):
     Clips a rioxarray by geodataframe polygons
     
     Args:
-        dapath: Path to raster
+        da: rioxarray Data Array
         gdfpath: Path to vector polygon dataset
     
     Returns:
@@ -1262,7 +1262,7 @@ def clip_dabox(dapath, bb):
     
     Args:
         dapath: Path to raster
-        bb: boundingbox coordinates xmin, ymin, xmax, ymax
+        bb: boundingbox coordinates iterable xmin, ymin, xmax, ymax
     
     Returns:
         Clipped rioxarray
@@ -1277,7 +1277,6 @@ def clip_dabox(dapath, bb):
     
     return clipped
     
-
 
 def extract_band(tifpath, findstr):
     """
@@ -1316,7 +1315,7 @@ def rasterize_one(tilow, strpath, da):
     Args:
         tilow: gdf
         strpath: output geotif path
-        da: raster for resolution and bound to match
+        da: raster for resolution and bounds to match
     
     Returns:
         geotiff to file
@@ -1347,3 +1346,6 @@ def rasterize_one(tilow, strpath, da):
 
     out_grid[column].rio.to_raster(strpath, compress='PACKBITS')
     
+## TODO
+## naive grids in 2D and 3D?
+## generic geophysics derivatives via harmonica
