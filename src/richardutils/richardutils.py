@@ -39,6 +39,7 @@ import pyvista as pv
 
 def richardfunction(n: float) -> float:
     """
+    This is not currently used so pointless to look at currently
     My function makes square roots.
 
     Args:
@@ -1350,3 +1351,4 @@ def rasterize_one(tilow, strpath, da):
 ## TODO
 ## naive grids in 2D and 3D?
 ## generic geophysics derivatives via harmonica
+## boring github actions things if ever have time
