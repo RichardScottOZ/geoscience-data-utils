@@ -18,9 +18,12 @@ from matplotlib import cm
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
 from osgeo import gdal
+
 import geopandas as gpd
 import fiona
 from shapely.geometry import box, mapping
+
+import rasterio
 
 import xarray as xr
 import rioxarray
@@ -30,8 +33,6 @@ from geocube.rasterize import rasterize_points_griddata, rasterize_points_radial
 
 import xrspatial
 from xrspatial import proximity
-
-import rasterio
 
 import pyvista as pv
 
