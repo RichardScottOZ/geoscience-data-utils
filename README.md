@@ -14,7 +14,7 @@ A few geoscience analysis helper functions I use ad hoc for:
 
 ## Documentation
 
-- Simple in progress https://richardscottoz.github.io/richardutils/
+- Simple in progress https://richardscottoz.github.io/geoscience-data-utils/
 
 
 ## Installing and building
