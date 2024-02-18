@@ -20,14 +20,13 @@ from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 from osgeo import gdal
 import geopandas as gpd
 import fiona
+from shapely.geometry import box, mapping
 
 import xarray as xr
 import rioxarray
 import geocube
 from geocube.api.core import make_geocube
 from geocube.rasterize import rasterize_points_griddata, rasterize_points_radial, rasterize_image
-
-from shapely.geometry import box, mapping
 
 import xrspatial
 from xrspatial import proximity
@@ -1317,7 +1316,7 @@ def extract_band(tifpath, findstr):
             
 def rasterize_one(tilow, strpath, da):
     """
-    Rasterize a geodataframe to a default one slow
+    Rasterize a geodataframe to a default one raster
     
     Args:
         tilow: gdf
