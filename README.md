@@ -5,7 +5,7 @@
 A few geoscience analysis helper functions I use ad hoc for:
 
 - Creating geodataframes from csv
-- Reading a directory of geotiffs into rioxarray
+- Reading a directory of rasters into rioxarray or vector data into geodataframes
 - Sampling rioxarrays at point locations
 - Clipping rioxarrays
 - Plotting rioxarrays
