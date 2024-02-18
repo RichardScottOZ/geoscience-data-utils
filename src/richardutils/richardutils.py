@@ -391,7 +391,6 @@ def plotmap(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cli
         plt.savefig(title + '.png',bbox_inches='tight')
         if slide_dict is not None:
         
-        
             slide_dict[title] = title + '.png'
 
 
@@ -439,7 +438,6 @@ def plotmap3(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')
         if slide_dict is not None:
-        
         
             slide_dict[title] = title + '.png'
             
@@ -502,7 +500,6 @@ def plotmap_background(da, robust=False, cmap='cetrainbow', size=6, title='Title
         plt.savefig(title + '.png',bbox_inches='tight')
         if slide_dict is not None:
         
-        
             slide_dict[title] = title + '.png'
             
         
@@ -556,7 +553,6 @@ def plotmapc(da, robust=False, cmap='cetrainbow', size=6, title='Title Here', cl
     if savefig:
         plt.savefig(title + '.png',bbox_inches='tight')
         if slide_dict is not None:
-        
         
             slide_dict[title] = title + '.png'
 
@@ -1039,8 +1035,7 @@ def gdf_parquet_list(strpath):
                 
     return check_list
             
-
-    
+   
 def tif_dict(strpath, masked=True, chunks=None, dsmatch=None):
     """
     Walks a directory of geotiffs and returns a dictionary of rioxarray DataArrays
