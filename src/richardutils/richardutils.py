@@ -1205,7 +1205,7 @@ def ers_to_tif(strpath, masked=True, chunks=None, dsmatch=None):
                         
     for file in check_dict:
         ersfile = file.replace('.ers','.tif')
-        print(file.replace('.ers','.etif'))
+        print(file.replace('.ers','.tif'))
         check_dict[file].rio.to_raster(ersfile, driver='GTiff')
         
                 
