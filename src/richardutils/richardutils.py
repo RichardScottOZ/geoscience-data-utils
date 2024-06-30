@@ -1171,6 +1171,7 @@ def tif_to_ers(strpath, masked=True, chunks=None, dsmatch=None):
                 
     return check_dict
     
+    
 def ers_to_tif(strpath, masked=True, chunks=None, dsmatch=None):
     """
     Walks a directory of ers and returns each as an ers geotiff
@@ -1256,7 +1257,7 @@ def tif_to_img(strpath, masked=True, chunks=None, dsmatch=None):
 
 def clip_da(da, gdfpath):
     """
-    Clips a rioxarray by geodataframe polygons
+    Clips a rioxarray raster by geodataframe polygons
     
     Args:
         da: rioxarray Data Array
@@ -1393,3 +1394,34 @@ def rasterize_one(tilow, strpath, da):
 ## naive grids in 2D and 3D?
 ## generic geophysics derivatives via harmonica
 ## boring github actions things if ever have time
+
+def csv_to_pyvista(csv_file_path):
+    """
+    Import an X,Y,Z CSV file and convert it to a PyVista mesh.
+
+    Parameters:
+    csv_file_path (str): Path to the CSV file containing X,Y,Z coordinates.
+
+    Returns:
+    pyvista.PolyData: PyVista mesh object created from the CSV data.
+    """
+    try:
+        # Read the CSV file
+        df = pd.read_csv(csv_file_path)
+
+        # Ensure the CSV has X, Y, and Z columns
+        required_columns = ['X', 'Y', 'Z']
+        if not all(col in df.columns for col in required_columns):
+            raise ValueError("CSV must contain 'X', 'Y', and 'Z' columns")
+
+        # Extract X, Y, Z coordinates
+        points = df[required_columns].values
+
+        # Create PyVista mesh from points
+        mesh = pv.PolyData(points)
+
+        return mesh
+
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        return None
