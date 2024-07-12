@@ -36,6 +36,9 @@ from xrspatial import proximity
 
 import pyvista as pv
 
+from geoh5py.workspace import Workspace
+from geoh5py.objects import BlockModel, Grid2D
+
 
 def richardfunction(n: float) -> float:
     """
@@ -1496,6 +1499,7 @@ def pad_grid_with_nulls(df, x_min, x_max, y_min, y_max, z_min, z_max, x_step, y_
     
     return merged_df
     
+    
 def pad_grid_with_nulls2d(df, x_min, x_max, y_min, y_max, x_step, y_step):
     """
     Pad a partial grid dataframe with nulls to create a complete 2d grid.
@@ -1541,5 +1545,75 @@ def pad_rectilinear_grid_with_nulls(df, x_coords, y_coords, z_coords):
     merged_df = pd.merge(complete_grid, df, on=['x', 'y', 'z'], how='left')
     
     return merged_df
+    
+    
+def xarray_to_geoh5(ds, workspace_path)
+    """
+    Assume x,y,z are dims in lowercase
+    
+    Parameters:
+    ds - xarray dataset
+    workspace path - string of location to read/create geoh5 workspace
+    
+    returns blockmodel for reference - not really useful
+    """
+    
+    with Workspace(workspace_path) as workspace:
+        print("using:",workspace.geoh5)
+
+        if 'z' in ds.dims:
+            origin = [ds.rio.bounds()[0],ds.rio.bounds()[1],ds.z.min().values]
+
+            xarr =  np.diff(ds.x)
+            xarr = np.insert(xarr, 0, 0)
+            xarr = np.insert(xarr, -1, 0)
+            u_cell_delimiters =  np.cumsum(xarr)
+
+            yarr =  np.diff(ds.y)
+            yarr = np.insert(yarr, 0, 0)
+            yarr = np.insert(yarr, -1, 0)
+            v_cell_delimiters =  np.cumsum(yarr) * -1
+
+            zarr =  np.diff(ds.z)
+            zarr = np.insert(zarr, 0, 0)
+            zarr = np.insert(zarr, -1, 0)
+            z_cell_delimiters =  np.cumsum(zarr)
+
+            if ds.z.min().values > 0 and 1 == 1:
+                origin = [ds.rio.bounds()[0],ds.rio.bounds()[1],ds.z.min().values * -1]
+                z_cell_delimiters =  z_cell_delimiters * -1
+
+            if max(abs(ds.z.min().values),abs(ds.z.max().values)) < 1000:
+                z_cell_delimiters =  z_cell_delimiters * 1000
+
+            blockmodel = BlockModel.create(
+                workspace,
+                origin=origin,
+                u_cell_delimiters=u_cell_delimiters,  # Offsets along u
+                v_cell_delimiters=v_cell_delimiters,  # Offsets along v
+                z_cell_delimiters=z_cell_delimiters,  # Offsets along z (down)
+                rotation=0.0,
+                name=key,
+            )
+
+            for var in ds.data_vars:
+                print(key, var)
+                if var != 'spatial_ref':
+
+                    ds[var].values = np.rot90(ds[var].values, k=2, axes=(0, 1))
+                    data = ds[var].transpose("y","x","z").values.flatten()
+
+                    print(data.shape, ds[var].shape)
+
+                    print("BLOCKMODEL INFO",blockmodel.n_cells)
+                    blockmodel.add_data({
+                        var : {"association":"CELL","values": data}
+                    })
+
+        else: #2d
+            print("NO z dimension")
+            pass
+        
+        return blockmodel    
     
     
