@@ -29,8 +29,10 @@ dependencies = [
     "geocube",
     "matplotlib",
     "xarray-spatial",
-	"gdal",
-	"pyvista"
+    "gdal",
+    "pyvista"
+    "geoh5py"
+    "xarray"
 ]
 
 [project.optional-dependencies]
