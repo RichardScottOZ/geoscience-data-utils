@@ -1425,3 +1425,22 @@ def csv_to_pyvista(csv_file_path):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         return None
+
+### 3D
+
+def df_to_rioxarray(df, data):
+    """
+    Import a dataframe with x,y,z columns and convert to raster
+
+    Parameters:
+    df - dataframe
+    data - column in the dataframe to be used as raster data
+
+    Returns:
+    pyvista.PolyData: PyVista mesh object created from the CSV data.
+    """
+
+    data = np.asarray(df[data]).reshape(1,df.y.unique().size,df.x.unique().size)
+    da = xr.DataArray(data=data,dims=["band","y","x"],coords={"band":[1],"y":df.y.unique(),"x":df.x.unique()})
+    #da.rio.write_crs('EPSG:4326',inplace=True)
+    return da
