@@ -1495,3 +1495,28 @@ def pad_grid_with_nulls(df, x_min, x_max, y_min, y_max, z_min, z_max, x_step, y_
     merged_df = pd.merge(complete_grid, df, on=['x', 'y', 'z'], how='left')
     
     return merged_df
+    
+def pad_grid_with_nulls2d(df, x_min, x_max, y_min, y_max, x_step, y_step):
+    """
+    Pad a partial grid dataframe with nulls to create a complete 2d grid.
+    
+    Parameters:
+    df (pd.DataFrame): Input dataframe with columns 'x', 'y', 'z', and any other data columns
+    x_min, x_max, y_min, y_max, z_min, z_max: Bounding box coordinates
+    x_step, y_step, z_step: Step sizes for each dimension
+    
+    Returns:
+    pd.DataFrame: Padded dataframe with nulls for missing grid points
+    """
+    
+    # Create complete grid
+    x = np.arange(x_min, x_max + x_step, x_step)
+    y = np.arange(y_min, y_max + y_step, y_step)
+    
+    complete_grid = pd.DataFrame([(xi, yi) for xi in x for yi in y for zi in z], columns=['x', 'y'])
+    
+    # Merge complete grid with existing data
+    merged_df = pd.merge(complete_grid, df, on=['x', 'y', 'z'], how='left')
+    
+    return merged_df
+    
