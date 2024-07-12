@@ -1430,7 +1430,7 @@ def csv_to_pyvista(csv_file_path):
 
 def df_to_rioxarray(df, data):
     """
-    Import a dataframe with x,y,z columns and convert to raster
+    Import a dataframe with x,y columns and convert to raster
 
     Parameters:
     df - dataframe
@@ -1445,5 +1445,27 @@ def df_to_rioxarray(df, data):
 
     data = np.asarray(df[data]).reshape(1,df.y.unique().size,df.x.unique().size)
     da = xr.DataArray(data=data,dims=["band","y","x"],coords={"band":[1],"y":df.y.unique(),"x":df.x.unique()})
-    #da.rio.write_crs('EPSG:4326',inplace=True)
     return da
+    
+    
+def df_to_xarray(df, data):
+    """
+    Import a dataframe with x,y,z columns and convert to raster
+
+    Parameters:
+    df - dataframe
+    data - column in the dataframe to be used as 3D grid
+
+    Returns:
+    pyvista.PolyData: PyVista mesh object created from the CSV data.
+    
+    Examples:
+    da_grav = df_to_xarray(dfjoin,'gravity')
+    """
+    
+    df = df.sort_values(by=["z","y","x"])
+    data = np.asarray(df[data]).reshape(df.z.unique().size,df.y.unique().size,df.x.unique().size)
+    da = xr.DataArray(data=data,dims=["z","y","x"],coords={"z":df.z.unique(),"y":df.y.unique(),"x":df.x.unique()})
+
+    return da
+    
