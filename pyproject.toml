@@ -30,8 +30,8 @@ dependencies = [
     "matplotlib",
     "xarray-spatial",
     "gdal",
-    "pyvista"
-    "geoh5py"
+    "pyvista",
+    "geoh5py",
     "xarray"
 ]
 
