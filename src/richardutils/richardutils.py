@@ -1438,6 +1438,9 @@ def df_to_rioxarray(df, data):
 
     Returns:
     pyvista.PolyData: PyVista mesh object created from the CSV data.
+    
+    Examples:
+    da_grav = df_to_xarray(dfjoin,'gravity')
     """
 
     data = np.asarray(df[data]).reshape(1,df.y.unique().size,df.x.unique().size)
