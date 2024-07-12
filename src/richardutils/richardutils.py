@@ -1506,7 +1506,7 @@ def pad_grid_with_nulls2d(df, x_min, x_max, y_min, y_max, x_step, y_step):
     x_step, y_step, z_step: Step sizes for each dimension
     
     Returns:
-    pd.DataFrame: Padded dataframe with nulls for missing grid points
+    merged_df: Padded dataframe with nulls for missing grid points
     """
     
     # Create complete grid
@@ -1519,4 +1519,27 @@ def pad_grid_with_nulls2d(df, x_min, x_max, y_min, y_max, x_step, y_step):
     merged_df = pd.merge(complete_grid, df, on=['x', 'y', 'z'], how='left')
     
     return merged_df
+    
+    
+def pad_rectilinear_grid_with_nulls(df, x_coords, y_coords, z_coords):
+    """
+    Pad a partial rectilinear grid dataframe with nulls to create a complete grid.
+    
+    Parameters:
+    df (pd.DataFrame): Input dataframe with columns 'x', 'y', 'z', and any other data columns
+    x_coords, y_coords, z_coords: Lists of coordinates for each dimension
+    
+    Returns:
+    merged_df: Padded dataframe with nulls for missing grid points
+    """
+    
+    # Create complete grid
+    complete_grid = pd.DataFrame([(x, y, z) for x in x_coords for y in y_coords for z in z_coords],
+                                 columns=['x', 'y', 'z'])
+    
+    # Merge complete grid with existing data
+    merged_df = pd.merge(complete_grid, df, on=['x', 'y', 'z'], how='left')
+    
+    return merged_df
+    
     
