@@ -11,6 +11,9 @@ A few geoscience analysis helper functions I use ad hoc for:
 - Plotting rioxarrays
 - Extracting a band from a rioxarray
 - Zonal statistics
+- Making xarrays in 3D
+
+Mostly for notebook style work
 
 ## Documentation
 
