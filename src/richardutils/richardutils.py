@@ -1547,13 +1547,14 @@ def pad_rectilinear_grid_with_nulls(df, x_coords, y_coords, z_coords):
     return merged_df
     
     
-def xarray_to_geoh5(ds, workspace_path):
+def xarray_to_geoh5(ds, workspace_path, key):
     """
     Assume x,y,z are dims in lowercase and that you want z in metres and negative
     
     Parameters:
     ds - xarray dataset
     workspace path - string of location to read/create geoh5 workspace
+    key - name for block model
     
     returns blockmodel for reference - not really useful
     """
