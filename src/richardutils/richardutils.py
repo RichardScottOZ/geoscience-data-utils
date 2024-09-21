@@ -1517,10 +1517,10 @@ def pad_grid_with_nulls2d(df, x_min, x_max, y_min, y_max, x_step, y_step):
     x = np.arange(x_min, x_max + x_step, x_step)
     y = np.arange(y_min, y_max + y_step, y_step)
     
-    complete_grid = pd.DataFrame([(xi, yi) for xi in x for yi in y for zi in z], columns=['x', 'y'])
+    complete_grid = pd.DataFrame([(xi, yi) for xi in x for yi in y ], columns=['x', 'y'])
     
     # Merge complete grid with existing data
-    merged_df = pd.merge(complete_grid, df, on=['x', 'y', 'z'], how='left')
+    merged_df = pd.merge(complete_grid, df, on=['x', 'y'], how='left')
     
     return merged_df
     
