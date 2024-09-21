@@ -1460,7 +1460,7 @@ def df_to_xarray(df, data):
     data - column in the dataframe to be used as 3D grid
 
     Returns:
-    pyvista.PolyData: PyVista mesh object created from the CSV data.
+    xarray data array
     
     Examples:
     da_grav = df_to_xarray(dfjoin,'gravity')
