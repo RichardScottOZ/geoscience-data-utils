@@ -628,7 +628,7 @@ def plotgdf(gdf, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', slide
 
 def plotgdf_da(gdf, da, column, title,alpha=0.5, savefig=True, cmap='cetrainbow', cmap_da='cetrainbow',slide_dict=None, size=7, legend=False, robust=False):
     """
-    Plot a geopdataframe with a title.
+    Plot a geodataframe with a title.
     Allow saving to a png
     Allow adding to a dictionary e.g. for presentation use
 
