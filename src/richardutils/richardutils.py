@@ -978,6 +978,91 @@ def location_sample(gdf, da, name_col):
     return dfda
 
 
+def location_sampleb(gdf, da, name_col, method="nearest", keep_xy=True, band_dim=None, prefix=None):
+    """
+    Sample an xarray DataArray (stack) at many point locations and return wide columns
+    (one column per band/stack layer).
+
+    Args:
+        gdf: GeoDataFrame of point geometries (must be in same CRS as `da`)
+        da: xarray.DataArray with dims including 'x' and 'y', and optionally a stack dim
+            like 'band' (e.g., shape (band, y, x) = (63, 1800, 3600))
+        name_col: column in gdf with location names (used as row index/ID)
+        method: selection method for x/y ('nearest' by default)
+        keep_xy: include the nearest pixel x/y used for each location as columns
+        band_dim: optionally force which non-spatial dimension to spread to columns
+                  (e.g., 'band', 'time'). If None, inferred.
+        prefix: optional prefix for band columns (defaults to the dim name)
+
+    Returns:
+        pandas.DataFrame with one row per location and one column per band/layer
+    """
+    # Build vectorized indexers
+    lat = gdf.geometry.y.to_numpy()
+    lon = gdf.geometry.x.to_numpy()
+    labels = gdf[name_col].astype(str).tolist()
+
+    xl = xr.DataArray(lon, dims=["location"], coords={"location": labels})
+    yl = xr.DataArray(lat, dims=["location"], coords={"location": labels})
+
+    # Sample all bands/layers at once
+    dapt = da.sel(x=xl, y=yl, method=method)
+    val_name = da.name if da.name is not None else "value"
+
+    # Figure out which dims (besides 'location') represent the stack
+    if band_dim is not None:
+        if band_dim not in dapt.dims:
+            raise ValueError(f"band_dim '{band_dim}' not in sampled data dims {list(dapt.dims)}")
+        non_loc_dims = [band_dim]
+    else:
+        non_loc_dims = [d for d in dapt.dims if d != "location"]
+
+    # If multiple stack dims, combine them into a single dim so we can pivot wide
+    if len(non_loc_dims) > 1:
+        dapt = dapt.stack(layer=tuple(non_loc_dims))  # MultiIndex coord
+        col_dim = "layer"
+        stacked_dims = non_loc_dims
+    elif len(non_loc_dims) == 1:
+        col_dim = non_loc_dims[0]
+        stacked_dims = non_loc_dims
+    else:
+        col_dim = None
+
+    # Long -> wide
+    df = dapt.to_dataframe(name=val_name).reset_index()
+    idx_cols = ["location"]
+    if keep_xy and "x" in df.columns and "y" in df.columns:
+        idx_cols += ["x", "y"]
+
+    if col_dim is None:
+        # No band/time dimension: just return the single column
+        return df[idx_cols + [val_name]]
+
+    wide = df.pivot(index=idx_cols, columns=col_dim, values=val_name).reset_index()
+    wide.columns.name = None
+
+    # Rename wide columns to readable names
+    band_cols = [c for c in wide.columns if c not in idx_cols]
+    if len(stacked_dims) == 1:
+        if prefix is None:
+            prefix = stacked_dims[0]
+        wide = wide.rename(columns={c: f"{prefix}_{c}" for c in band_cols})
+    else:
+        # Columns are tuples from the MultiIndex; flatten them
+        rename_map = {}
+        for c in band_cols:
+            if isinstance(c, tuple):
+                new_name = "_".join(f"{d}_{v}" for d, v in zip(stacked_dims, c))
+            else:
+                new_name = str(c)
+            if prefix:
+                new_name = f"{prefix}_{new_name}"
+            rename_map[c] = new_name
+        wide = wide.rename(columns=rename_map)
+
+    return wide
+
+
 def gdf_shape_dict(strpath):    
     """
     Walks a directory of shapefiles
