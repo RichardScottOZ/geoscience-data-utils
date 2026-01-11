@@ -74,6 +74,11 @@ instance/
 # Sphinx documentation
 docs/_build/
 
+# HTML documentation files (these should be in docs/_build/html/)
+# If you see these in the root, they were likely copied from _build
+# and should not be committed
+/*.html
+
 # PyBuilder
 target/
 

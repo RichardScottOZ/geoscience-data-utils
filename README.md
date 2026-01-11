@@ -52,13 +52,48 @@ The docs are written in Markdown, with the top-level index written in RST. The d
     cd docs
     make html
 
-The []`myst-nb` plugin](https://myst-nb.readthedocs.io/en/latest/) for Sphinx should allow you to mix RST, Markdown, and Jupyter Notebooks in your documentation.
+The [`myst-nb` plugin](https://myst-nb.readthedocs.io/en/latest/) for Sphinx should allow you to mix RST, Markdown, and Jupyter Notebooks in your documentation.
 
 This package uses [the Furo theme](https://pradyunsg.me/furo/), but it's easy enough to change options like this in `docs/conf.py`.
 
-The documentation builds as [a GitHub Action](https://github.com/scienxlab/python-package-template/blob/main/.github/workflows/publish-docs.yml) and [is deployed here](https://richardscottoz.github.io/richardutils/).
+The documentation builds as [a GitHub Action](https://github.com/scienxlab/python-package-template/blob/main/.github/workflows/publish-docs.yml) and [is deployed here](https://richardscottoz.github.io/geoscience-data-utils/).
 
-As a brief note: after the make html above, copy the files in the docs/_build/html folder created to the gh-pages branch root and commit.
+### Updating Documentation
+
+For detailed instructions on updating and maintaining code documentation, see the comprehensive guides:
+
+**[📚 Documentation Quick Start Guide](docs/docs_quickstart.md)** - Quick reference for common tasks
+
+**[📖 Complete Documentation Guide](docs/updating_documentation.md)** - Detailed instructions
+
+These guides cover:
+- How to write and format docstrings
+- Adding new documentation pages
+- Creating tutorial notebooks
+- Building and previewing documentation locally
+- Common documentation tasks and troubleshooting
+
+### Helper Scripts
+
+The `scripts/` directory contains useful helper scripts for documentation maintenance:
+
+- **`build_docs.sh`** - Build, serve, and check documentation
+- **`check_docstrings.py`** - Validate docstring coverage
+- **`validate_links.py`** - Check for broken links
+
+Quick examples:
+```bash
+# Build and serve documentation locally
+./scripts/build_docs.sh serve
+
+# Check docstring coverage
+python scripts/check_docstrings.py
+
+# Validate documentation links
+python scripts/validate_links.py
+```
+
+See [scripts/README.md](scripts/README.md) for detailed usage information.
 
 ## Continuous integration
 
