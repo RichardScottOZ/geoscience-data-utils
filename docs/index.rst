@@ -55,6 +55,7 @@ Other resources
     :caption: Other resources
 
     development
+    updating_documentation
     contributing
     authors
     license
