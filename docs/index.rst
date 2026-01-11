@@ -55,6 +55,7 @@ Other resources
     :caption: Other resources
 
     development
+    docs_quickstart
     updating_documentation
     contributing
     authors

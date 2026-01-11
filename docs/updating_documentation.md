@@ -446,7 +446,7 @@ When contributing documentation:
 4. **Check links**: Ensure all links work
 5. **Review output**: Check the built HTML looks correct
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for more details on the contribution process.
+See the [CONTRIBUTING.md](https://github.com/RichardScottOZ/geoscience-data-utils/blob/main/CONTRIBUTING.md) file for more details on the contribution process.
 
 ## Additional Resources
 

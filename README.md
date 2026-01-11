@@ -60,11 +60,13 @@ The documentation builds as [a GitHub Action](https://github.com/scienxlab/pytho
 
 ### Updating Documentation
 
-For detailed instructions on updating and maintaining code documentation, see the comprehensive guide:
+For detailed instructions on updating and maintaining code documentation, see the comprehensive guides:
 
-**[📚 Documentation Update Guide](docs/updating_documentation.md)**
+**[📚 Documentation Quick Start Guide](docs/docs_quickstart.md)** - Quick reference for common tasks
 
-This guide covers:
+**[📖 Complete Documentation Guide](docs/updating_documentation.md)** - Detailed instructions
+
+These guides cover:
 - How to write and format docstrings
 - Adding new documentation pages
 - Creating tutorial notebooks

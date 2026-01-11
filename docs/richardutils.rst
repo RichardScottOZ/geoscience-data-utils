@@ -9,21 +9,21 @@ richardutils.cli module
 
 .. automodule:: richardutils.cli
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 richardutils.richardutils module
 --------------------------------
 
 .. automodule:: richardutils.richardutils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: richardutils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
