@@ -1072,7 +1072,7 @@ def gdf_shape_dict(strpath):
         a dictionary of geodataframes
         
     Examples: 
-       gdf_shape_dict(r'D:\BananaSplits')
+       gdf_shape_dict(r'D:\\BananaSplits')
     
     """
     check_dict = {}
@@ -1093,7 +1093,7 @@ def gdf_parquet_dict(strpath):
         a dictionary of geodataframes
         
     Examples: 
-       gdf_parquet_dict(r'D:\BananaSplits')
+       gdf_parquet_dict(r'D:\\BananaSplits')
     
     """
     check_dict = {}
@@ -1114,7 +1114,7 @@ def gdf_parquet_list(strpath):
         a list of geodataframes
         
     Examples: 
-       gdf_parquet_list(r'D:\BananaSplits')
+       gdf_parquet_list(r'D:\\BananaSplits')
     
     """
     check_list = []
@@ -1138,8 +1138,8 @@ def tif_dict(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       tif_dict(r'D:\BananaSplits')
-       tif_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
+       tif_dict(r'D:\\BananaSplits')
+       tif_dict(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
@@ -1173,8 +1173,8 @@ def ers_dict(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       ers_dict(r'D:\BananaSplits')
-       ers_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
+       ers_dict(r'D:\\BananaSplits')
+       ers_dict(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
@@ -1231,8 +1231,8 @@ def tif_to_ers(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       tif_dict(r'D:\BananaSplits')
-       tif_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
+       tif_to_ers(r'D:\\BananaSplits')
+       tif_to_ers(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
@@ -1272,8 +1272,8 @@ def ers_to_tif(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       tif_dict(r'D:\BananaSplits')
-       tif_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
+       ers_to_tif(r'D:\\BananaSplits')
+       ers_to_tif(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
@@ -1314,8 +1314,8 @@ def tif_to_img(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       tif_dict(r'D:\BananaSplits')
-       tif_dict(r'D:\BananaSplits', chunk=s(1,1024,1024))
+       tif_to_img(r'D:\\BananaSplits')
+       tif_to_img(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
