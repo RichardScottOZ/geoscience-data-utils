@@ -6,7 +6,7 @@ At the command line:
 
 Or, if you use Conda environments:
 
-    conda create -n richardutils python=3.9
+    conda create -n richardutils python=3.12
     conda activate richardutils
     pip install richardutils
 
