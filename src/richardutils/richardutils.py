@@ -1231,8 +1231,8 @@ def tif_to_ers(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       tif_dict(r'D:\\BananaSplits')
-       tif_dict(r'D:\\BananaSplits', chunk=s(1,1024,1024))
+       tif_to_ers(r'D:\\BananaSplits')
+       tif_to_ers(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
@@ -1272,8 +1272,8 @@ def ers_to_tif(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       tif_dict(r'D:\\BananaSplits')
-       tif_dict(r'D:\\BananaSplits', chunk=s(1,1024,1024))
+       ers_to_tif(r'D:\\BananaSplits')
+       ers_to_tif(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
@@ -1314,8 +1314,8 @@ def tif_to_img(strpath, masked=True, chunks=None, dsmatch=None):
         a dictionary of rioxarrays
         
     Examples: 
-       tif_dict(r'D:\\BananaSplits')
-       tif_dict(r'D:\\BananaSplits', chunk=s(1,1024,1024))
+       tif_to_img(r'D:\\BananaSplits')
+       tif_to_img(r'D:\\BananaSplits', chunk=s(1,1024,1024))
     
     """
 
